@@ -1,0 +1,17 @@
+# file: postgresql/tasks/users.yml
+
+- name: PostgreSQL | Ensure PostgreSQL is running
+  service:
+    name: "{{ postgresql_service_name }}"
+    state: started
+
+- name: PostgreSQL | Make sure the PostgreSQL users are present
+  postgresql_user:
+    name: "postgres"
+    password: "postgres"
+    encrypted: "yes"
+    port: "5432"
+    state: present
+    login_user: "postgres"
+  become: yes
+  become_user: "postgres"

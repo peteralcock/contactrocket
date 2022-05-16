@@ -1,0 +1,14 @@
+---
+
+- name: Delegate PostgreSQL tasks to the relevant host
+  set_fact:
+    odoo_postgresql_delegate_to: "{{ odoo_config_db_host if ((odoo_config_db_host|bool) != False) else inventory_hostname }}"
+    odoo_postgresql_remote_user: "{{ odoo_config_db_host_user if ((odoo_config_db_host|bool) != False) else deploy_user }}"
+
+- block:
+    - name: PostgreSQL - Activate the 'unaccent' extension on databases
+      postgresql_ext: name=unaccent db=template1
+      when: odoo_postgresql_active_unaccent
+  become: yes
+  become_method: sudo
+  become_user: postgres

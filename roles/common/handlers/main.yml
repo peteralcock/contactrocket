@@ -1,0 +1,68 @@
+- name: update tzdata
+  command: /usr/sbin/dpkg-reconfigure --frontend noninteractive tzdata
+- name: update apt package cache
+  apt: update_cache=yes
+  when: ansible_os_family == "Debian"
+
+- name: install common packages debian/ubuntu
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - python
+    - python-dev
+    - python-pip
+    - build-essential
+    - git
+    - libffi-dev
+    - ntp
+    - make
+    - cmake
+    - g++
+    - debhelper
+    - devscripts
+    - netcat
+    - openssl
+    - libpcre3
+    - dnsmasq
+    - procps
+    - libssl-dev
+    - libyaml-dev
+    - libreadline-dev
+    - libxml2-dev
+    - libxslt1-dev
+    - libicu-dev
+    - libkrb5-dev
+    - libcurl4-gnutls-dev
+    - libqt4-dev
+    - zlib1g-dev
+    - dh-systemd
+    - autotools-dev
+    - apt-transport-https
+    - software-properties-common
+
+  when: ansible_os_family == "Debian"
+
+- name: install common packages redhat/centos
+  yum: pkg={{ item }} state=latest
+  with_items:
+    - git
+    - ntp
+    - make
+    - cmake
+    - pcre-devel
+    - automake
+    - gcc
+    - gcc-c++
+    - kernel-devel
+    - dnsmasq
+    - procps
+    - libxml2-devel
+    - libxslt-devel
+    - python-devel
+    - libicu-devel
+    - libffi-devel
+    - krb5-devel
+    - qt4-devel
+    - zlib-devel
+  when: ansible_os_family == "RedHat"
+
+

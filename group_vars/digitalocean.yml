@@ -1,0 +1,58 @@
+---
+# Server Timzone + Locale
+timezone: America/New_York
+locale: en_US.UTF-8
+
+# Swap
+# Uncommend here and in /roles/common/tasks/main.yml
+swap_enabled: true
+swap_file_path: /swapfile
+swap_file_size_kb: 1024
+
+# General settings
+deploy_dir: /var/www/app
+deploy_user: deploy
+deploy_password: deploy
+deploy_app_name: contactrocket
+deploy_server_hostname: box.your-server.net
+
+# Nginx
+nginx_https_enabled: true
+
+# Certbot
+certbot_url: https://dl.eff.org/certbot-auto
+certbot_dir: /opt/certbot
+certbot_email: webmaster@your-server.net
+
+# Authorized Hosts
+# This copies your local public key to the remote machine
+# for passwordless login. Modify this!
+ssh_public_key_files:
+  - /Users/machine/.ssh/id_rsa.pub
+
+
+# Ruby
+ruby_install_version: 0.6.1
+chruby_version: 0.3.9
+ruby_version: 2.2.6
+
+# Rails
+rails_secret_key_base: changemeaswelldudepleaseomgsosooncuzotherwisetheygetsupermadatyouomgomg
+
+# Elasticsearch
+elasticsearch_version: 2.3.0
+
+# Monit
+monit_sidekiq_enabled: true
+
+# Odoo
+odoo_version: 10.0
+odoo_user: odoo
+odoo_repo_type: git
+odoo_config_db_host: localhost
+odoo_config_db_user: postgres
+odoo_config_db_passwd: postgres
+odoo_repo_dest: "/home/odoo/odoo"
+odoo_config_admin_passwd: admin
+odoo_config_addons_path: "/home/odoo/odoo/addons"
+odoo_config_server_wide_modules: web,web_kanban,connector

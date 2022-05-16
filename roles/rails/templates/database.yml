@@ -1,0 +1,23 @@
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: {{ deploy_app_name }}
+  username: postgres
+  password: postgres
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: {{ deploy_app_name }}
+  username: postgres
+  password: postgres
+  host: localhost
+
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: {{ deploy_app_name }}
+  username: postgres
+  password: postgres
+  host: localhost
