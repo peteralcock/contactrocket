@@ -9,8 +9,7 @@ This is a project I obsessed over for a couple years, several years ago, for whi
 ## Quick Start
 Wow I can't believe how long I've been using Docker... so I totally forgot how much infrastructure code I put into this project. I have dockerized this whole thing, into a few services. CRM, Web, and the Engine(s). If you know Docker and Rails, you should be fine. If you don't, watch my screencast found after this promotional explainer video I made in order to advertise this product on social media. Enjoy!
 
-https://github.com/peteralcock/contactrocket/raw/main/contactrocket.mp4
-
+[![Watch the video](/logo.jpg?raw=true )](https://www.youtube.com/watch?v=cXQpZ4bjAEc)
 
 
 
