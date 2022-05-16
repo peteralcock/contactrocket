@@ -1,7 +1,7 @@
 # ContactRocket
 Next-generation lead-generation software-as-a-service
 
-![Screenshot](/screenshot.jpg?raw=true "Dashboard Screenshot")
+![Logo](/logo.jpg?raw=true "ContactRocket Logo")
 
 ## Introduction
 This is a project I obsessed over for a couple years, several years ago, for which I lost countless hours of sleep, but ultimately failed to launch as a SaaS product (marketing is expensive). It has sat uncelebrated on my external hard-drive "mountain" for over seven years, and since I am on the hunt for a new RoR-heavy technical role, figured I may as well just give it away and sacrifice a monetization pipedream to make an open-source contribution as an expression my gratitude for Ruby on Rails, Sidekiq (<a href="https://www.mikeperham.com/">Mike Perham</a>, you're the fucking man.) GitHub, Amazon Web Services, and the internet. Thanks to all of you corporate and human entities, my life-long love for software has been all the more enjoyable. <b>Gladiators, I salute you.</b>
@@ -17,24 +17,23 @@ I set this up to easily be deployed on Elastic Beanstalk, for the lazy people fo
 
     https://y.yarn.co/a21ae108-5e1c-49e8-a69a-f634dab43d8e.mp4
 
-Amazon's ElastiCache can be used for background job data store, but for finer grain control you will want to run your own Redis cluster on EC2s, and you can easily use Amazon's Elasticsearch service if you don't know how to run your own ES cluster. (No, I will not go into how to do this right here and now. Hire me to do it for you.)
+Amazon's ElastiCache can be used for background job data store. For finer grain control you will want to run your own Redis cluster, and you can  use Amazon's Elasticsearch service if you don't know how to run your own ES cluster. (No, I will not go into how to do this right now. Hire me to do it for you.)
+
+## Dashboard / Front-End
+
+I created the dashboard using websockets and AJAX to deliver live visual indicators of your crawlers progress because it's much more exciting to watch than having to refresh the page everytime a user wants to "check their score". A thousand man hours went into this simple improvement to the UX/UI, so be grateful.
+
+![Screenshot](/screenshot.jpg?raw=true "Dashboard Screenshot")
+
+![Screenshot](/emails.jpg?raw=true "Emails Found")
 
 
-## Dashboard
+## Engines / Back-End
 
+![ContactRocket Engine](/engine.jpg?raw=true "Engine Design")
 
+Background processing engines are broken into separate parts for separate purposes. Social Media crawling is network intensive, and webpage crawling is as well, and the returned data is very write-heavy on the I/O for your RDS instances (or however you decide to host the MySQL database), both of which Amazon charges a pound of flesh to consume (look into "IOPS Provisioning" if you don't believe my warning). I may recommend running the engine workers on Linode or DO, albeit at a significant latency cost between the back-end and the front-end application. But hey, it's your money.
 
+## Cloud Architecture
 
-
-## Engines
-
-
-
-Background processing engines are broken into separate parts for separate purposes. Social Media crawling is network intensive. Website crawling is as well, and is very write-heavy on the I/O front, both of which Amazon charges a pound of flesh. So I recommend running engine workers on Linode or DO, albeit at a significant latency cost between the front and back end application services. But hey, it's your money.
-
-
-
-
-
-
-
+If you want to crawl millions of websites in an evening with this (which I have done), you will need to use the deployment scripts I've included for Amazon Web Services' Auto-Scaling EC2 clusters. This will cost you a pretty penny, but I've optimized these scripts to dynamically configure themselves to whatever size EC2 you choose to use by making the deployment script aware of the number of cores and available memory on their server and adjusting the multi-threading configuration accordingly. You're welcome.
