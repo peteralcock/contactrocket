@@ -1,9 +1,7 @@
-# ContactRocket
-Next-generation lead-generation software-as-a-service
 
 ![ContactRocket](/logo.png?raw=true "ContactRocket")
 
-## Introduction
+## Welcome to the machine
 This is a project I obsessed over for too long several years ago. I lost countless hours of sleep working on it and ultimately failed to launch it as a SaaS product (marketing is expensive). It has sat uncelebrated on my external hard-drive "mountain" for years, and since I am on the hunt for a new RoR-heavy technical role, figured I may as well just give it away and sacrifice my monetization pipedream to make an open-source contribution as an expression of my gratitude for Ruby on Rails, Sidekiq (<a href="https://www.mikeperham.com/">Mike Perham</a>, you're the fucking man.) GitHub, Amazon Web Services, and the internet. Thanks to these aformentioned corporate and human entities, my life-long love for software has been all the more enjoyable. Gladiators, I salute you.
 
 ## Quick Start
