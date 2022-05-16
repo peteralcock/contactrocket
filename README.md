@@ -5,7 +5,7 @@
 This is a project I obsessed over for too long several years ago. I lost countless hours of sleep working on it and ultimately failed to launch it as a SaaS product (marketing is expensive). It has sat uncelebrated on my external hard-drive "mountain" for years, and since I am on the hunt for a new RoR-heavy technical role, figured I may as well just give it away and sacrifice my monetization pipedream to make an open-source contribution as an expression of my gratitude for Ruby on Rails, Sidekiq (<a href="https://www.mikeperham.com/">Mike Perham</a>, you're the fucking man.) GitHub, Amazon Web Services, and the internet. Thanks to these aformentioned corporate and human entities, my life-long love for software has been all the more enjoyable. Gladiators, I salute you.
 
 ## Getting Started
-I can't believe how long I've been using Docker. This whole thing is containerized into a few core services: CRM, Dashboard, and the Engine. If you know Docker and Rails and AWS, you should be fine. If you don't, watch this cute promotional explainer video I made instead... [![Watch the video](/logo.jpg?raw=true )](https://www.youtube.com/watch?v=cXQpZ4bjAEc)
+I can't believe how long I've been using Docker. This whole thing is containerized into a few core services: CRM, Dashboard, and the Engine. If you know Docker and Rails and AWS, you should be fine. If you don't, watch this cute explainer video I made instead... [![Watch the video](/logo.jpg?raw=true )](https://www.youtube.com/watch?v=cXQpZ4bjAEc)
 
 
 ## Infrastructure / Deployment
