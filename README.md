@@ -24,7 +24,7 @@ I created the dashboard using websockets and AJAX to deliver live visual indicat
 
 ![ContactRocket Engine](/engine.jpg?raw=true "Engine Design")
 
-Background processing engines are broken into separate parts for separate purposes. Social Media crawling is network intensive, cached page crawling is as well, returned data is very write-heavy on the I/O for RDS instances (or however you decide to host your SQL store), both of which Amazon charges a pound of flesh to consume (look into "IOPS Provisioning" if you don't believe my warning). I may recommend running the engine workers on Linode or DO, albeit at a significant latency cost between the back-end and the front-end application. But hey, it's your money.
+Background processing engines are broken into separate parts for separate purposes. Social Media crawling is network intensive, cached page crawling is as well, returned data is very write-heavy on the I/O for RDS instances (or however you decide to host your SQL store), both of which Amazon charges a pound of flesh to consume (look into "IOPS Provisioning" if you don't believe my warning). I may recommend running the engine workers on Linode or DO, albeit at a significant latency cost between the back-end and the front-end. But hey, it's your money.
 
 ## Scaling Up
 
