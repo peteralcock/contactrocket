@@ -1,0 +1,1 @@
+worker: sidekiq start -L log/sidekiq.log -P tmp/pids/sidekiq.pid -e $RAILS_ENV

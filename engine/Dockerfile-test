@@ -1,0 +1,9 @@
+FROM contactrocket/engine:latest
+RUN apt-get update -qq && apt-get install -y xvfb sqlite3 libsqlite3-dev libqt5webkit5-dev libqtwebkit-dev xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic x11-apps libqt4-webkit libqt4-dev xvfb nodejs
+ENV INSTALL_PATH /app
+ENV RACK_ENV test
+ENV RAILS_ENV test
+WORKDIR $INSTALL_PATH
+COPY . .
+RUN bundle install --without development
+CMD ['config/containers/app_cmd.sh']

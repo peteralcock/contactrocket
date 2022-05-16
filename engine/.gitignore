@@ -1,0 +1,12 @@
+.vagrant
+.idea
+.bundle
+tmp/
+log/
+./config/database.yml
+./config/secrets.yml
+.DS_Store
+./tmp/cache
+log/*.log
+tmp/pids
+tmp

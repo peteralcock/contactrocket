@@ -1,0 +1,8 @@
+FROM contactrocket/engine:latest
+ENV RACK_ENV production
+ENV RAILS_ENV production
+ENV INSTALL_PATH /app
+WORKDIR $INSTALL_PATH
+COPY . .
+RUN bundle install --without test development
+CMD ['config/containers/app_cmd.sh']

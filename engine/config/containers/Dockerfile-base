@@ -1,0 +1,10 @@
+FROM phusion/passenger-ruby22
+MAINTAINER Peter Alcock
+ENV HOME /root
+CMD ["/sbin/my_init"]
+RUN mkdir -p /app
+WORKDIR /app
+COPY Gemfile.lock Gemfile.lock
+COPY Gemfile Gemfile
+RUN bundle install --without test development
+COPY . .
