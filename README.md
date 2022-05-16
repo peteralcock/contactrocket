@@ -29,3 +29,8 @@ Background processing engines are broken into separate parts for separate purpos
 ## Scaling Up
 
 If you want to crawl millions of websites in an evening with this you will need to use the deployment scripts I've included for Amazon Web Services' Auto-Scaling EC2 clusters. This will cost you a pretty penny, but I've optimized these scripts to dynamically configure themselves to whatever size EC2 you choose to use by making the deployment script aware of the number of cores and available memory on their server and adjusting the multi-threading configuration accordingly. You're welcome.
+
+
+## Testing
+
+I have written tests for every function of the engine, and then some. It's all done in RSpec with Capyabara-Webkit handling headless browser simulations for testing the web dashboard, which can be a dependency nightmare, so use my https://github.com/peteralcock/rubylab repo to jumpstart your success.
