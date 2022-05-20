@@ -1,0 +1,34 @@
+# Install python and aptitude on the target machines (apt-get install python aptitude)
+# Copy ssh public key to machines (ssh-copy-id user@host)
+---
+- name: Install Rails Server
+  hosts: digitalocean
+  # After initial provisioning, use deploy instead of root
+  remote_user: root
+  #remote_user: deploy
+  #become: yes
+  #become_method: sudo
+  gather_facts: no # don't gather facts because /usr/bin/python isn't set
+  pre_tasks:
+    - name: apt-get update
+      raw: apt-get update -qq
+    - name: install python 2.7 and aptitude
+      raw: apt-get install -qq python2.7 aptitude
+    - name: set python 2.7 as default
+      raw: update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+    - name: install dependencies
+      raw: apt-get install -y --no-install-recommends build-essential wget unzip libpq-dev libcurl3 zlib1g-dev libqt4-dev libkrb5-dev libicu-dev libssl-dev libyaml-dev libc6-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev make cmake autoconf automake libcurl3 zlib1g-dev libqt4-dev bison libpq-dev libkrb5-dev libicu-dev libssl-dev libyaml-dev zlib1g-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev libssl-dev libc6-dev g++ bison mcrypt libkrb5-dev libicu-dev libssl-dev libyaml-dev libreadline-dev zlib1g-dev libxml2-dev libxslt1-dev
+    - name: install nodejs
+      raw: apt-get install -y nodejs npm
+
+
+  roles:
+    - common
+    - monit
+    - postgresql
+    - ruby
+    - redis
+    - odoo
+    - deploy-user
+    - rails
+    - passenger
