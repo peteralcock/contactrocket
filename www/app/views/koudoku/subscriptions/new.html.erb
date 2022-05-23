@@ -1,0 +1,42 @@
+<style>
+  .main-content {
+    color: #505050;
+    background-color: rgb(232, 237, 242);
+  }
+
+  h2 {
+
+    color:white;
+  }
+
+  .main-content {
+    background: url(/images/nightsky.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 920px;
+  }
+
+</style>
+<%= render 'layouts/topbar' %>
+
+<div class="main-content wide-content">
+  <div class="panel-content">
+      <div class="col-md-12">
+        <div class="billing-sec">
+          <div class="payment">
+              <%= render 'card', title: (Koudoku.free_trial? ? t('koudoku.subscriptions.start_trial') : t('koudoku.subscriptions.upgrade_your_account')), url: owner_subscriptions_path(@owner) %>
+          </div>
+          <!-- Panel Content -->
+          <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+          <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+          <!-- jQuery is used only for this example; it isn't required to use Stripe -->
+        </div>
+      </div>
+    </div>
+  </div><!-- Main Content -->
+
+
+<%= render :partial => 'layouts/footer' %>
+

@@ -1,0 +1,180 @@
+<style>
+  td {
+    color:black;
+  }
+  tr {
+    color:black;
+  }
+  thead {
+    color:black;
+  }
+
+  span{
+    color:black;
+  }
+
+  .main-content {
+    background: url(/images/rolladeck_bg.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 920px;
+  }
+
+
+    .user-bar {
+      background: transparent;
+    }
+
+
+
+</style>
+
+<%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+<%= stylesheet_link_tag "bootstrap-sortable.css" %>
+
+<%= render 'layouts/topbar' %>
+<header class="side-header light-skin">
+  <%= render 'layouts/navigation' %>
+</header>
+<div class="main-content">
+
+  <div class="heading-sec">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="heading-profile">
+          <h1><span style="color:white"><i class="fa fa-phone"></i> Phone Numbers</span></h1>
+          <span style="color:white;">You have <%= current_user.phone_leads.count %> new leads that are currently pending approval</span>
+        </div>
+      </div>
+    </div><!-- Top Bar Chart -->
+  </div>
+
+  <div class="panel-content">
+    <% unless current_user.phone_leads.count < 1 %>
+
+    <% if @contacts %>
+        <div class="row" style="">
+          <div class="col-md-12">
+            <div class="widget">
+
+              <div class="table-area">
+                <div class="table-responsive">
+                  <table class="table sortable">
+                    <thead>
+                    <tr>
+                      <th data-defaultsort='disabled'> </th>
+                      <th>Number</th>
+                      <th class=" hidden-xs" >Tags</th>
+                      <th data-defaultsort='disabled'></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% @contacts.each do |contact| %>
+                    <tr>
+                      <td width="2%">
+                        <% unless @search_term %>
+                        <a href="/phone_leads/remove/<%= contact.id %>" class="remove_link"  id="remove_<%= contact.id %>">
+                        <i class="fa fa-remove" style="color:red"></i>
+                        </a>
+                        <% end %>
+                      </td>
+                      <td width="40%" style="font-size: 24px;" ><%= link_to contact.display_name, "tel:#{contact.number}" %>
+                        <% link_to "<i class='fa fa-skype'></i>".html_safe, "callto://#{contact.number}" %>
+                        <% unless contact.location %><i title="Unverified" class="fa fa-question" style="color:grey"></i>
+                        <% else %><i title="Validated" class="fa fa-location-arrow" style="color:orange"></i> <%= contact.location %>
+                        <% end %>
+                        <p>
+                          <i class="fa fa-crosshairs"></i> <%= link_to contact.domain, "http://#{contact.domain}", :target => '_blank' %> on  <%= contact.created_at.to_date %>
+                        </p>
+                      </td>
+                      <td width="36%" style="font-size: 14px;" class="hidden-sm hidden-xs" >
+
+                        <% contact.word_count.first(10).each do |tag| %>
+                            <% size = (10 + tag[1]) %>
+                            <a href="/phone_leads?q=<%= tag[0] %>" >
+                              <%= tag[0] %>
+                            </a>
+                        <% end %>
+
+                        <div class="wordcloud_<%= contact.id %>">
+                        </div>
+                        <script>
+                          var words = [
+                            <% contact.word_count.each do |word| %>
+                            {text: <%= word[0] %>, weight: word[1]},
+                            <% end %>
+                          ];
+                          $('#wordcloud_<%= contact.id %>').jQCloud(words);
+                        </script>
+                      </td>
+                      <td width="2%">
+                            <a href="/phone_leads/add/<%= contact.id %>" class="add_to_crm_link"  id="add_to_crm_<%= contact.id %>">
+                              <i class="fa fa-plus" style="color:green"></i>
+                            </a>
+                      </td>
+
+
+                    </tr>
+                <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+            <% if current_user.phone_leads.count < 1 %>
+                <h1 style="text-align: center; color:lightslategray;"><i class="fa fa-question-circle"></i></h1>
+            <% end %>
+
+      </div>
+
+
+          <% if @contacts and @search_term.nil? %><div style="text-align: center;"><%= will_paginate @contacts, :style => 'color:blue' %></div><% end %>
+
+        </div>
+
+    <% end %>
+
+    <% end %>
+
+  </div>
+  <%= render :partial => 'layouts/footer' %>
+
+
+  <%= stylesheet_link_tag 'sweetalert.css' %>
+  <%= javascript_include_tag 'sweetalert.min.js' %>
+
+
+
+  <script>
+    <% flash.each do |name, msg| %>
+
+    <% if msg.is_a?(String) and msg != "HIDE" %>
+
+    swal({
+      title: "<%= name.humanize.upcase %>",
+      text: "<%= msg %>",
+      timer: 4000,
+      showConfirmButton: false
+    });
+
+    <% end %>
+
+    <% end %>
+    <% if current_user.phone_leads.count < 1 %>
+    swal({
+      title: "NOT FOUND",
+      text: "Return to Mission Control to download contacts",
+      showConfirmButton: true
+    });
+
+
+    <% end %>
+
+  </script>
+
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src='/js/moment.min.js'></script>
+<script src='/js/bootstrap-sortable.js'></script>

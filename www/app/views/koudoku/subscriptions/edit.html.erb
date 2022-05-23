@@ -1,0 +1,52 @@
+<style>
+  td {
+    color:black;
+  }
+  tr {
+    color:black;
+  }
+  thead {
+    color:black;
+  }
+
+
+</style>
+<%= render 'layouts/topbar' %>
+<header class="side-header light-skin">
+  <%= render 'layouts/navigation' %>
+</header>
+<div class="main-content">
+  <div class="panel-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="billing-sec">
+          <div class="row">
+            <% if params['update'] == 'card' %>
+                <%= render 'card', title: t('koudoku.payment.update_payment_information'), url: owner_subscription_path(@owner, @subscription) %>
+            <% else %>
+                <%= render 'pricing_table' %>
+                <p style=" text-align: center">
+                  You can also <a href="mailto:support@your-server.net">cancel your subscription</a>
+                  <% t('koudoku.subscriptions.cancel_your_subscription_note_html',
+                       :link => (link_to t('koudoku.subscriptions.cancel_your_subscription'),
+                                         cancel_owner_subscription_path(@owner, @subscription),
+                                         method: :post)) %></p>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- Panel Content -->
+
+</div><!-- Main Content -->
+<%= render :partial => 'layouts/footer' %>
+
+
+
+
+
+
+
+
+

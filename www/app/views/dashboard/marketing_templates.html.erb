@@ -1,0 +1,51 @@
+<style>
+  .cell {
+    padding-top: 5px;
+    margin-top: 0px;
+  }
+  .widget {
+    background-color:transparent;
+    background:transparent;
+    color:white;
+  }
+
+  .mini-stats {
+    background:transparent;
+    color:white;
+  }
+
+  a {
+    color:white;
+  }
+
+  .widget-box {
+
+    background-color:transparent;
+    background:transparent;
+    color:white;
+  }
+  p {
+    color:white;
+  }
+  h2 {
+    color:white;
+  }
+  h4 {
+    color:white;
+  }
+</style>
+<%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+<%= stylesheet_link_tag 'bootstrap-tour.min.css' %>
+<%= stylesheet_link_tag 'search_results.css' %>
+<% engine_count = current_user.active_engines.value %>
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<%= render 'layouts/topbar' %>
+<header class="side-header light-skin">
+  <%= render 'layouts/navigation' %>
+</header>
+
+<iframe src="<%= ENV['PROTOCOL'] %>://<%= ENV['MAILER_HOST'] %>/templates/list/?uid=<%= current_user.uid %>" height="1200px" width="100%" style="padding-left:220px; padding-top:40px;" scrolling="no" seamless="seamless" frameborder="0" type="text/html"></iframe>
+

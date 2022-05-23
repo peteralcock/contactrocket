@@ -1,0 +1,204 @@
+<style>
+  .cell {
+    padding-top: 5px;
+    margin-top: 0px;
+  }
+
+  .main-content {
+    background: white;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 640px;
+  }
+  .widget {
+    background-color:transparent;
+    background:transparent;
+    color:black;
+  }
+
+  .mini-stats {
+    background:transparent;
+    color:black;
+  }
+
+  a {
+    color:cornflowerblue;
+  }
+</style>
+<%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+<%= stylesheet_link_tag 'bootstrap-tour.min.css' %>
+<%= stylesheet_link_tag 'search_results.css' %>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<%= render 'layouts/topbar' %>
+<header class="side-header light-skin">
+  <%= render 'layouts/navigation' %>
+</header>
+
+
+<div class="main-content" style="min-height: 680px;">
+  <div class="heading-sec">
+
+    <div class="row">
+
+      <div class="col-md-8">
+        <div class="heading-profile" >
+          <h1 style="color: black;"><span style="color: black;"><i class="fa fa-globe" style="color: black;"></i> Global Analytics</span></h1>
+        </div>
+      </div>
+
+      <div class="col-md-4 hidden-xs">
+        <div class="top-bar-chart">
+          <div class="quick-report">
+            <div class="quick-report-infos">
+              <p style="color:darkgrey">Contacts</p>
+              <h3 id="mileage" style="color:black;"><%= current_user.total_contacts %></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row" style="text-align: center;">
+      <div class="col-md-3" >
+        <div class="widget">
+          <div class="mini-stats " id="email_stats">
+            <span class="orange-skin"><a href="/email_leads" style="color:white;"><i class="fa fa-envelope"></i></a></span>
+            <p><a href="/email_leads">Email</a></p>
+            <h3 style="text-size:28px; color:black;"><a href="/email_leads" id="email_count" style="text-size:28px; color:black;"><%= @global_email_lead_count %></a></h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="widget">
+          <div class="mini-stats" id="phone_stats">
+            <span class="pink-skin"><a href="/phone_leads" style="color:white;"><i class="fa fa-phone"></i></a></span>
+            <p><a href="/phone_leads">Phone</a></p>
+            <h3 style="text-size:28px; color:black;"><a href="/phone_leads" id="phone_count" style="text-size:28px; color:black;"><%= @global_phone_lead_count  %></a></h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3" >
+        <div class="widget" >
+          <div class="mini-stats" id="social_stats" >
+            <span class="purple-skin"><a href="/social_leads" style="color:white;"><i class="fa fa-hashtag"></i></a></span>
+            <p><a href="/social_leads">Social</a></p>
+            <h3 style="text-size:28px; color:black;"><a href="/social_leads" id="social_count" style="text-size:28px; color:black;"><%= @global_social_lead_count %></a></h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3" >
+        <div class="widget" >
+          <div class="mini-stats" id="target_stats" >
+            <span class="red-skin"><a href="/websites" style="color:white;"><i class="fa fa-bullseye"></i></a></span>
+            <p><a href="/websites">Websites</a></p>
+            <h3 style="text-size:28px; color:black;"><a href="/websites" id="mileage" style="text-size:28px; color:black;"><%= @global_website_count  %></a></h3>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <%= render :partial => "layouts/messages" %>
+
+  <div class="breadcrumbs hidden-sm hidden-xs">
+
+  </div>
+
+  <div class="row" style="padding-top:100px;">
+    <%= bar_chart [["Addresses", EmailLead.count], ["Numbers", PhoneLead.count], ["Profiles", SocialLead.count]] %>
+
+    <div class="row">
+      <div class="col-md-6">
+    <%= pie_chart SocialLead.group(:social_network).count %>
+    </div>
+    <div class="col-md-6">
+    <%= pie_chart SocialLead.top(:username, 3), xtitle: "Username", ytitle: "Networks",  legend: "bottom" %>
+    </div>
+    </div>
+
+    <div class="col-md-12">
+    <%= line_chart   Website.pluck("domain").uniq.map { |c| { name: c, data: @phones.where(domain: c).group_by_day(:created_at, format: "%B %d, %Y").count, legend: "bottom" }  }, discrete: true %>
+    </div>
+
+    <div class="col-md-6">
+      <%= geo_chart PhoneLead.group(:state).count, :library => {:backgroundColor => "transparent", region: "US", resolution: "provinces"}  %>
+    </div>
+    <div class="col-md-6">
+      <%= geo_chart PhoneLead.group(:country).count, :library => {:backgroundColor => "transparent"}  %>
+    </div>
+
+  </div>
+
+</div>
+
+
+<%= render :partial => "layouts/footer" %>
+
+<%= stylesheet_link_tag 'sweetalert.css' %>
+<%= javascript_include_tag 'sweetalert.min.js' %>
+
+
+
+<script>
+  <% flash.each do |name, msg| %>
+
+  <% if msg.is_a?(String) and msg != "HIDE" %>
+
+  swal({
+    title: "<%= name.humanize.upcase %>",
+    text: "<%= msg %>",
+    confirmButtonText: "OK"
+  });
+
+  <% end %>
+
+  <% end %>
+</script>
+
+
+<%= javascript_include_tag "bootstrap-tour.min.js" %>
+
+<script>
+
+  $.ajax({ url: "/progress.json", success: function(data){
+    //Update your dashboard gauge
+    $('#email_count').text(data.email_count);
+    $('#phone_count').text(data.phone_count);
+    $('#social_count').text(data.social_count);
+    $('#page_count').text(data.page_count);
+    $('#last_url').text(data.last_url);
+    $('#last_url_2').text(data.last_url);
+
+    $('#mileage').text(data.page_count);
+
+    //Setup the next poll recursively
+    poll();
+  }, dataType: "json"});
+
+
+  (function poll(){
+    setTimeout(function(){
+      $.ajax({ url: "/progress.json", success: function(data){
+        //Update your dashboard gauge
+        $('#email_count').text(data.email_count);
+        $('#phone_count').text(data.phone_count);
+        $('#social_count').text(data.social_count);
+        $('#page_count').text(data.page_count);
+        $('#last_url').text(data.last_url);
+        $('#last_url_2').text(data.last_url);
+
+        $('#mileage').text(data.page_count);
+        $('#bandwidth').text(data.bandwidth);
+
+        //Setup the next poll recursively
+        poll();
+      }, dataType: "json"});
+    }, 1500);
+  })();
+
+</script>

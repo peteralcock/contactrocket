@@ -1,0 +1,95 @@
+ <style>
+   body {
+     font-family: 'Open Sans', sans-serif;
+     background-color: #777;
+     font-size: 16px;
+   }
+   .content {
+     background-color: #fff;
+     margin: 20px 30px;
+     padding: 30px;
+     border-radius: 10px;
+   }
+   label {
+     color: #477;
+     font-weight: normal;
+     font-size: 0.8em;
+   }
+   .form-control {
+     border-bottom: 1px solid #dbdbdb;
+     font-size: 1em;
+   }
+   .form-control,
+   .form-control:hover,
+   .form-control:active,
+   .form-control:focus {
+     border: none;
+     box-shadow: none;
+     border-bottom: 1px solid #dbdbdb;
+   }
+   img {
+     max-width: 100%;
+     max-height: 100%;
+   }
+   .ready {
+     width: 60%;
+     margin: 0 20%;
+     background-color: #477;
+   }
+   .ready:hover {
+     background-color: #177;
+   }
+   .title {
+     text-align: center;
+     padding-bottom: 20px;
+   }
+
+ </style>
+
+<div class="content">
+  <div class="row">
+    <h3 class="title">
+      You're moments away from completing your purchase
+    </h3>
+  </div>
+  <div class="col-md-2"></div>
+  <div class="col-md-4">
+    <h3><label>Credit card details</label></h3>
+    <form action="" class="">
+      <div class="form-group">
+        <label for="">Card Type</label>
+        <div class="btn-group pull-right">
+          <button class="btn btn-default active"><i class="fa fa-2x fa-cc-visa"></i></button>
+          <button class="btn btn-default"><i class="fa fa-2x fa-cc-mastercard"></i></button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Name on Card</label>
+        <input type="text" placeholder="Bruce Wayne" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="">Expiry date</label>
+        <input placeholder="MM/YY" type="text" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="">Card Number</label>
+        <input placeholder="1111 2222 3333 4444" type="text" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="">CVV</label>
+        <input placeholder="456" type="text" class="form-control" />
+      </div>
+    </form>
+  </div>
+  <div class="col-md-4">
+    <img src="http://www.vegetarian-shoes.co.uk/Portals/42/product/images/prd0683d04d-faaf-4826-a692-45d2e5cfbe3b.jpg" alt="" />
+    <div class="col-md-3"></div>
+    <div class="col-md-6">Your rocket awaits...</div>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row">
+    <button class="btn btn-success ready">
+      Ready to buy ?
+    </button>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="panel panel-default">
+  <div class="panel-heading" data-toggle="collapse" data-target="#collapseFour">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+        Email Settings
+      </a>
+    </h4>
+  </div>
+  <div id="collapseFour" class="panel-collapse collapse">
+    <div class="panel-body">
+      <%= f.fields_for :email_settings, @campaign.email_settings do |ff| %>
+      <div class="row">
+        <div class="col-xs-3">
+          <p>Subject:</p>
+        </div>
+        <div class="col-xs-1">
+          <span class="glyphicon glyphicon-question-sign" title='Subject used for SMTP and email headers'></span>
+        </div>
+        <div class="col-xs-8">
+          <%= ff.text_field(:subject,
+                placeholder: 'Subject Line',
+                class: 'form-control') %>
+        </div>
+      </div>
+
+      <div class="row top-buffer">
+        <div class="col-xs-3">
+          <p>From:</p>
+        </div>
+        <div class="col-xs-1">
+          <span class="glyphicon glyphicon-question-sign" title='From: used for email headers'></span>
+        </div>
+        <div class="col-xs-8">
+          <%= ff.text_field(:from,
+                  placeholder: 'email@your-server.net',
+                  class: 'form-control') %>
+        </div>
+      </div>
+
+      <div class="row top-buffer">
+        <div class="col-xs-3">
+          <p>Display From:</p>
+        </div>
+        <div class="col-xs-1">
+          <span class="glyphicon glyphicon-question-sign" title='What you want displayed for the from category within the email headers'></span>
+        </div>
+        <div class="col-xs-8">
+          <%= ff.text_field(:display_from,
+                  placeholder: 'Contactrocket',
+                  class: 'form-control') %>
+        </div>
+      </div>
+
+      <div class="row top-buffer">
+        <div class="col-xs-3">
+          <p>Reply To:</p>
+        </div>
+        <div class="col-xs-1">
+          <span class="glyphicon glyphicon-question-sign" title='What you want set for the reply to field'></span>
+        </div>
+        <div class="col-xs-8">
+          <%= ff.text_field(:reply_to,
+                  placeholder: 'email@your-server.net',
+                  class: 'form-control') %>
+        </div>
+      </div>
+
+      <div class="row top-buffer">
+        <div class="col-xs-3">
+          <p>Marketing URL:</p>
+        </div>
+        <div class="col-xs-1">
+          <span class="glyphicon glyphicon-question-sign" title='Marketing URL that you would like the target to click on. This URL is embeded within the email message before sending'></span>
+        </div>
+        <div class="col-xs-8">
+          <%= ff.text_field(:marketing_url,
+                  placeholder: 'https://site.your-server.net',
+                  class: 'form-control') %>
+        </div>
+      </div>
+      <% end %>
+
+      <%= f.fields_for :campaign_settings, @campaign.campaign_settings do |ff| %>   
+      <div class="row top-buffer">
+        <div class="col-xs-3">
+            <p>FQDN:</p>
+        </div>
+        <div class="col-xs-1">
+          <span class="glyphicon glyphicon-question-sign" title='Fully Qualified Domain Name (FQDN) is required to properly configure virtual hosts with Apache. Ensure that you have properly created DNS records to redirect targets to your marketing website.'></span>
+        </div>
+        <div class="col-xs-8">
+          <%= ff.text_field(:fqdn,
+                  placeholder: 'site.your-server.net',
+                  class: 'form-control') %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

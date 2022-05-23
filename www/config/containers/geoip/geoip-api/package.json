@@ -1,0 +1,20 @@
+{
+  "name": "geoip-api",
+  "version": "1.0.0",
+  "description": "GeoIP REST API",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/osterman/geoip-api.git"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "geoip-lite": "^1.1.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}

@@ -1,0 +1,26 @@
+<div class="widget" style="">
+  <div class="widget-controls">
+    <span class="close-content"><i class="fa fa-trash-o"></i></span>
+    <span class="expand-content"><i class="fa fa-expand"></i></span>
+    <span class="refresh-content"><i class="fa fa-refresh"></i></span>
+  </div><!-- Widget Controls -->
+  <div class="our-clients-sec">
+    <div class="widget-title">
+      <h3>Prospect List</h3>
+      <span>You have added <%= @quicklist.count %> contacts</span>
+    </div>
+    <div id="searchDir"><form action="#" class="filterform"><input placeholder="Contact Search" class="filterinput" type="text"></form></div>
+    <div style="position: relative; overflow: hidden; width: auto; height: 233px;" class="slimScrollDiv"><ul style="overflow: hidden; width: auto; height: 233px;" id="people-list" class="client-list">
+      <% current_user.email_leads.last(3).each do |record| %>
+          <li>
+            <span class="user-status <%= ['online', 'offline'].sample %> <%= record.ux_color %>-skin">J</span>
+            <div class="client-info">
+              <h3><a href="http://<%= record.domain %>" title=""><%= record.display_name %></a></h3>
+              <p><%= record.title %></p>
+              <a href="http://<%= record.domain %>" title=""> </a>
+            </div>
+          </li>
+      <% end %>
+    </ul><div style="background: rgb(0, 0, 0) none repeat scroll 0% 0%; width: 2px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 95.5792px;" class="slimScrollBar"></div><div style="width: 2px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51) none repeat scroll 0% 0%; opacity: 0.2; z-index: 90; right: 1px;" class="slimScrollRail"></div></div>
+  </div><!-- Our Clients Sec -->
+</div>

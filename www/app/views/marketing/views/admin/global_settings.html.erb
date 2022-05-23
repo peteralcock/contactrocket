@@ -1,0 +1,79 @@
+
+<% @page_title = "Global Settings" %>
+
+<%= error_messages_for(@global_settings) %>
+
+<div class="global_settings">
+  <h2>Global Settings</h2>
+
+  <%= form_for(:global_settings, :url => {:action => 'update_global_settings'}) do |f| %>
+
+  <table class="table borderless" summary="Global Settings fields">
+    <tr>
+      <th>Application Site URL</th>
+      <td><span class="ui-icon ui-icon-help" title='Full Site url including HTTP(S) protocol that will be used as the base callback url for tracking  details from visitors'></span></td>
+      <td><%= f.text_field(:site_url, placeholder: 'https://your-server.net',
+                    required: true, class: 'form-control') %></td>
+    </tr>
+    <tr>
+    <tr>
+      <th>Apache Restart Command</th>
+      <td><span class="ui-icon ui-icon-help" title='Command used on the Operating System to restart Apache. This is required to manage the virtual hosts for websites'></span></td>
+      <td><%= f.text_field(:command_apache_restart, class: 'form-control') %></td>
+    </tr>
+    <tr>
+      <th>Apache Status Command</th>
+      <td><span class="ui-icon ui-icon-help" title='Command used on the Operating System to status Apache. This is required for monitoring the web server.'></span></td>
+      <td><%= f.text_field(:command_apache_status, class: 'form-control') %></td>
+    </tr>
+    <tr>
+      <th>Apache VHOST Command</th>
+      <td><span class="ui-icon ui-icon-help" title='Command used on the Operating System for listing all Virtual Hosts.'></span></td>
+      <td><%= f.text_field(:command_apache_vhosts, class: 'form-control') %></td>
+    </tr>
+    <tr>
+      <th>Apache sites-enabled Path</th>
+      <td>
+        <span class="ui-icon ui-icon-help" title='Path or location of where the Apache stores the sites-enabled virtual hosts'></span></td>
+      <td><%= f.text_field(:sites_enabled_path, class: 'form-control') %></td>
+    </tr>
+    <tr>
+      <th>Reports Refresh Time</th>
+      <td><span class="ui-icon ui-icon-help" title='Time in seconds use to poll the server for stats on the campaign stats page'></span></td>
+      <td><%= f.text_field(:reports_refresh, class: 'form-control') %></td>
+    </tr>
+    <tr>
+      <th>SMTP Timeout</th>
+      <td><span class="ui-icon ui-icon-help" title='Timeout in seconds to allow when sending emails through the SMTP server'></span></td>
+      <td><%= f.text_field(:smtp_timeout, class: 'form-control') %></td>
+    </tr>
+    <tr>
+      <th>BeEF URL</th>
+      <td><span class="ui-icon ui-icon-help" title='URL used for BeEF to hook browsers with javascript'></span></td>
+      <td><%= f.text_field(:beef_url,
+                placeholder: "http://your-server.net/hook.js",
+                class: 'form-control') %></td>
+    </tr>
+    <tr>
+      <th>Bing API Key</th>
+      <td>
+        <span class="ui-icon ui-icon-help" title='Bing API Key required for email enumeration'></span>
+      </td>
+      <td>
+        <%= f.text_field(:bing_api, 
+                placeholder: "BKqC2hIKr8foem2E1qiRvB5ttBQJK8objH8kZE/WJVs=", 
+                class: 'form-control') %>
+      </td>
+    </tr>
+    <tr>
+      <th>Background Email</th>
+      <td><span class="ui-icon ui-icon-help" title='Use Sidekiq to send emails in the background'></span></td>
+      <td><%= f.check_box(:asynchronous) %></td>
+    </tr>
+  </table>
+
+  <%= submit_tag("Update Changes", class: 'btn btn-primary') %>
+
+  <% end %>
+
+</div>

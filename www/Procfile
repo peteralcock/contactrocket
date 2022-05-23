@@ -1,0 +1,2 @@
+web: rails s -e $RAILS_ENV -p $RAILS_PORT
+worker: sidekiq start -L log/sidekiq.log -P tmp/pids/sidekiq.pid -e $RAILS_ENV

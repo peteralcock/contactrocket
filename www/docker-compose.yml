@@ -1,0 +1,107 @@
+version: '2'
+
+services:
+
+#  geoip:
+#    restart: always
+#    image: xxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/contactrocket/geoip
+#    ports:
+#      - '0.0.0.0:8882:8000'
+
+#  chatbot:
+#    restart: always
+#    image: xxxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/hushfling/chat
+#    ports:
+#      - '0.0.0.0:8069:80'
+
+  elasticsearch:
+    image: elasticsearch:5.1
+    restart: always
+    ports:
+      - '9200:9200'
+  match:
+    restart: always
+    image: pavlov/match
+    links:
+      - elasticsearch:elasticsearch
+    environment:
+      - "ELASTICSEARCH_URL=http://elasticsearch:9200"
+    ports:
+      - '0.0.0.0:8888:80'
+
+#  detect:
+#    image: beniz/deepdetect_cpu
+#    restart: always
+#    environment:
+#      - "ELASTICSEARCH_URL=$ELASTICSEARCH_URL"
+#    ports:
+#      - '0.0.0.0:8883:8080'
+
+  mood:
+    restart: always
+    image: anroots/sentiment
+    ports:
+      - '0.0.0.0:8880:8888'
+
+
+#  face:
+#    restart: always
+#    image: bamos/openface
+#    ports:
+#      - '0.0.0.0:8000:8000'
+#      - '0.0.0.0:9000:9000'
+
+  nlp:
+    restart: always
+    image: jgontrum/spacyapi:en
+    ports:
+      - '0.0.0.0:5000:5000'
+
+#  image:
+#    restart: always
+#    image: h2non/imaginary
+#    ports:
+#      - '0.0.0.0:9001:9000'
+
+#  rabbitmq:
+#    restart: always
+#    image: tutum/rabbitmq
+#    dns: ["8.8.8.8"]
+#    environment:
+#      - "RABBITMQ_PASS=password"
+#
+#  strokewidthtransform:
+#    restart: always
+#    image: tleyden5iwx/open-ocr-preprocessor
+#    volumes:
+#      - ./scripts/:/opt/open-ocr/
+#    dns: ["8.8.8.8"]
+#    links:
+#      - rabbitmq
+#    command: "/opt/open-ocr/open-ocr-preprocessor -amqp_uri amqp://admin:password@rabbitmq/ -preprocessor stroke-width-transform"
+#
+#  openocrworker:
+#    restart: always
+#    image: tleyden5iwx/open-ocr
+#    volumes:
+#      - ./scripts/:/opt/open-ocr/
+#    dns: ["8.8.8.8"]
+#    links:
+#      - rabbitmq
+#    command: "/opt/open-ocr/open-ocr-worker -amqp_uri amqp://admin:password@rabbitmq/"
+
+#  openocr:
+#    restart: always
+#    image: tleyden5iwx/open-ocr
+#    dns: ["8.8.8.8"]
+#    volumes:
+#      - ./scripts/:/opt/open-ocr/
+#    links:
+#      - rabbitmq
+#    ports:
+#      - "0.0.0.0:9292:9292"
+#    command: "/opt/open-ocr/open-ocr-httpd -amqp_uri amqp://admin:password@rabbitmq/ -http_port 9292"
+
+
+volumes:
+  elasticsearch:

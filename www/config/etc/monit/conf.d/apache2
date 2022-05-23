@@ -1,0 +1,10 @@
+  check process apache with pidfile /var/run/apache2/apache2.pid
+    start program = "/etc/init.d/apache2 start" with timeout 60 seconds
+    stop program  = "/etc/init.d/apache2 stop"
+    if cpu > 60% for 2 cycles then alert
+    if cpu > 80% for 5 cycles then restart
+    if totalmem > 1000.0 MB for 5 cycles then restart
+    if children > 250 then restart
+    if failed host crm.your-server.net port 80 protocol http then restart  with timeout 15 seconds
+    if 3 restarts within 5 cycles then timeout
+    group server

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @image_asset.image_url %>
+</p>
+
+<p>
+  <strong>Source url:</strong>
+  <%= @image_asset.source_url %>
+</p>
+
+<p>
+  <strong>Keywords:</strong>
+  <%= @image_asset.keywords %>
+</p>
+
+<p>
+  <strong>Sentiment:</strong>
+  <%= @image_asset.sentiment %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @image_asset.description %>
+</p>
+
+<p>
+  <strong>Domain:</strong>
+  <%= @image_asset.domain %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @image_asset.website_id %>
+</p>
+
+<%= link_to 'Edit', edit_image_asset_path(@image_asset) %> |
+<%= link_to 'Back', image_assets_path %>

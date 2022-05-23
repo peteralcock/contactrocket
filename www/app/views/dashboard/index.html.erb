@@ -1,0 +1,395 @@
+<style>
+  .cell {
+       padding-top: 5px;
+       margin-top: 0px;
+     }
+
+  .main-content {
+    background: url(/images/dashboard.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 1400px;
+  }
+    .widget {
+      background-color:transparent;
+      background:transparent;
+      color:white;
+    }
+
+    .mini-stats {
+      background:transparent;
+      color:white;
+    }
+
+    a {
+      color:white;
+    }
+
+    .widget-box {
+
+      background-color:transparent;
+      background:transparent;
+      color:white;
+    }
+    p {
+      color:white;
+    }
+    h2 {
+      color:white;
+    }
+    h4 {
+      color:white;
+    }
+</style>
+<%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+<%= stylesheet_link_tag 'bootstrap-tour.min.css' %>
+<%= stylesheet_link_tag 'search_results.css' %>
+<% engine_count = current_user.active_engines.value %>
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<%= render 'layouts/topbar' %>
+<header class="side-header light-skin">
+  <%= render 'layouts/navigation' %>
+</header>
+<div class="main-content" style="max-height: 680px;">
+
+
+  <%= render :partial => "layouts/messages" %>
+
+
+  <div class="heading-sec">
+    <div class="row" style="display:none">
+      <div class="col-md-12">
+        <div class="heading-profile">
+          <h1><span style="color:white"><i class="fa fa-space-shuttle"></i> Mission Control </span></h1>
+          <span style="color:white;"> Signed in as <b><%= current_user.email %></b> with <b><%= current_user.email_leads.count + current_user.social_leads.count + current_user.phone_leads.count %></b> new leads pending approval</span>
+        </div>
+      </div>
+
+    </div><!-- Top Bar Chart -->
+    <div class="row">
+      <div class="col-md-12">
+
+      <div class="col-md-12" >
+
+        <div class="row hidden-md hidden-lg" >
+          <div class="col-md-12" >
+
+            <div class="search-sec" style="background: transparent">
+              <form action="/targets" method="post" id="target_form">
+
+                <input style="color:white" placeholder="http://" type="url" name="url" id="target_box_small" autofocus>
+                <button type="submit">
+                  <i class="fa fa-crosshairs" style="color:red; font-size: 24px;"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="padding-bottom:50px">
+
+          <div class="col-lg-12" style=" ">
+
+          <div class="col-md-2">
+            <div class="widget">
+              <div class="mini-stats " id="email_stats">
+                <span class="clear-skin"><a href="/email_leads" style="color:white;"><i class="fa fa-envelope"></i></a>
+                <h3 style="text-size:28px; color:white;"><a href="/email_leads" id="email_count" style="text-size:28px; color:white;"><%= current_user.email_leads.count %></a></h3></span>
+              </div>
+            </div>
+          </div>
+            <div class="col-md-2">
+            <div class="widget">
+              <div class="mini-stats" id="phone_stats">
+                <span class="clear-skin"><a href="/phone_leads" style="color:white;"><i class="fa fa-phone"></i></a>
+                <h3 style="text-size:28px; color:white;"><a href="/phone_leads" id="phone_count" style="text-size:28px; color:white;"><%= current_user.phone_leads.count %></a></h3></span>
+              </div>
+            </div>
+          </div>
+            <div class="col-md-2">
+            <div class="widget" >
+              <div class="mini-stats" id="social_stats" >
+                <span class="clear-skin"><a href="/social_leads" style="color:white;"><i class="fa fa-linkedin"></i></a>
+                <h3 style="text-size:28px; color:white;"><a href="/social_leads" id="linkedin_count" style="text-size:28px; color:white;"><%= current_user.social_leads.is_linkedin.count %></a></h3></span>
+              </div>
+            </div>
+          </div>
+            <div class="col-md-2">
+              <div class="widget" >
+                <div class="mini-stats" id="social_stats" >
+                <span class="clear-skin"><a href="/social_leads" style="color:white;"><i class="fa fa-twitter"></i></a>
+                <h3 style="text-size:28px; color:white;"><a href="/social_leads" id="twitter_count" style="text-size:28px; color:white;"><%= current_user.social_leads.is_twitter.count %></a></h3></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="widget" >
+                <div class="mini-stats" id="social_stats" >
+                <span class="clear-skin"><a href="/social_leads" style="color:white;"><i class="fa fa-facebook-official"></i></a>
+                <h3 style="text-size:28px; color:white;"><a href="/social_leads" id="facebook_count" style="text-size:28px; color:white;"><%= current_user.social_leads.is_facebook.count %></a></h3></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="widget" >
+                <div class="mini-stats" id="social_stats" >
+                <span class="clear-skin"><a href="/social_leads" style="color:white;"><i class="fa fa-github"></i></a>
+                <h3 style="text-size:28px; color:white;"><a href="/social_leads" id="github_count" style="text-size:28px; color:white;"><%= current_user.social_leads.is_github.count %></a></h3></span>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="row hidden-sm hidden-xs">
+          <div class="col-md-12">
+
+            <div class="search-sec" style="background: transparent; color:black;">
+              <div class="input-group">
+              <form action="/targets" method="post" id="target_form" style="background-color: white;">
+                <%  if current_user.active_engines.value > current_user.max_engines %>
+              <input style="color:black;" placeholder="New targets acquired, please wait..." disabled>
+                <% else %>
+                <input style="color:black;" title="Scan multiple targets at once by entering each URL separated by commas." placeholder="http://company.com" type="url" name="url" id="target_box_large" autofocus>
+                <button type="submit" id="target_submit_large">
+                  <i class="fa fa-crosshairs" style="color:red; font-size: 24px;"></i>
+                </button>
+                <% end %>
+              </form>
+
+             <span class="input-group-btn" style="padding-left: 15px;">
+
+                 <%= form_tag import_websites_path, multipart: true, id: 'file_form' ,  style: "border:0px; text-align:right;" do %>
+                   <button type="submit" class="btn btn-danger" style="display:none;"> LAUNCH </button>
+               <% end %>
+      </span>
+              </div>
+            </div>
+              </div>
+            </div>
+          </div>
+        <div class="row" style="color:white" >
+          <div class="col-lg-3 hidden-xs hidden-sm hidden-md">
+            <div class="widget-box clearfix" >
+              <div class="pull-center">
+               </div>
+              <div class="text-center" style="text-align: center;">
+                <i class="pe-7s-graph1 fa-4x"></i>
+                <h1 class="m-xs" id="total_contacts" style="text-shadow: 0 0 3px #000000;color:white">
+                  <%= current_user.total_contacts %></h1>
+                <h3 class="font-extra-bold no-margins text-success" style="color:limegreen;">
+                NEW LEADS
+                </h3>
+                <a href="http://<%= [ENV['CRM_HOST'], '/leads'].join %>" style="color:lightgrey">
+
+                  <h5 style="color:darkgrey; text-align:center;">    <%= current_user.leads.count %> added to your CRM</h5>
+
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 hidden-xs hidden-sm hidden-md">
+            <div class="widget-box clearfix">
+              <div>
+
+
+                <div class="m-t-xl">
+                    <h2 style="text-align: center;">
+                      <i class="fa fa-sitemap" style="color:white;font-size:18px;"></i>
+                    <a href="https://your-server.net/pricing" id="mileage" style="text-size:28px; color:white;">
+                    <%= current_user.pages_crawled.count %>
+
+                    </a> <b style="font-size:12px"> URLs </b>
+                    </h2>
+                                        <span class="font-bold no-margins" style="color:white;">
+                                          <% if @websites.count > 0 %>
+                                          <i class="fa fa-crosshairs" style="color:limegreen" ></i>
+                                              <%=   @websites.last.domain || @websites.first.domain %>
+                                          <% end %>
+                                        </span>
+
+                  <div class="progress m-t-xs full progress-small">
+                    <div style="width: <%= ((@websites.count.to_f / current_user.max_targets) * 100).round %>%" aria-valuemax="<%= current_user.max_targets %>"  aria-valuemin="0" aria-valuenow="<%= (@websites.count.to_f / current_user.max_targets).round %>" role="progressbar" class=" progress-bar progress-bar-success">
+                      <span class="sr-only"><%= ((@websites.count.to_f / current_user.max_targets) * 100).round %>% used</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 hidden-xs hidden-sm hidden-md" >
+            <div class="widget-box clearfix p3-bg">
+              <div>
+                <div class="pad-all">
+                  <br>
+                  <p class="mar-no">
+                    <span class="pull-right text-bold" style="font-size: 18px; color:white;;"><%= current_user.leads.count %></span>
+                    <i class="fa fa-plus"></i> Leads Qualified
+                  </p>
+                  <p class="mar-no">
+                    <span class="pull-right text-bold" style="font-size: 18px; color:white;;"><%= current_user.email_leads.is_valid.count %></span>
+                    <i class="fa fa-check"></i> Emails Validated
+                  </p>
+                  <p class="mar-no">
+                    <span class="pull-right text-bold" style="font-size: 18px; color:white;;"><%= engine_count %></span>
+                    <i class="fa fa-bullseye"></i> Targets Acquired
+                  </p>
+                </div>
+                <div class="pad-all text-center">
+                  <!--Placeholder--><br>
+                  <div id="demo-sparkline-area"><canvas style="display: inline-block; width: 226px; height: 40px; vertical-align: top;" width="226" height="40"></canvas></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 hidden-xs hidden-sm hidden-md">
+            <div class="widget-box clearfix p3-bg">
+              <div>
+                <div class="pad-all">
+                  <%  if engine_count > 0   %>
+                      <div class="col-md-12" style="background: transparent; padding:0px;" >
+                        <div class="cell" style="background: transparent; padding:0px; " >
+                          <div class="card" style="background: transparent; padding:0px;" >
+                            <span class="gauge"></span>
+                          </div>
+
+                          <p style="text-align: center;">
+                            <a href="#" id="last_url"  style="color:ghostwhite; font-size: 12px;"></a>
+                          </p>
+
+                        </div>
+                      </div>
+                  <% else %>
+
+                      <div class="col-md-12" style="text-align: center; background: transparent; padding:0px;" >
+                        <div class="cell" style="background: transparent; padding:0px; " >
+                          <div class="card" style="background: transparent; padding:0px;" >
+                            <% current_user.max_engines.times do |x|%>
+                                <i class="fa fa-rocket" style="color:white;font-size:24px;"></i>
+                                <% end %>
+                            <h4 style="color:limegreen">READY</h4>
+                          </div>
+
+                        </div>
+                      </div>
+                  <% end %>
+                  <h5 style="display:none; color:darkgrey; text-align:center;"><%= engine_count %>/<%= current_user.max_engines %> rockets in flight</h5>
+
+                </div>
+                <div class="pad-all text-center">
+                  <!--Placeholder--><br>
+                  <div id="demo-sparkline-area"><canvas style="display: inline-block; width: 226px; height: 40px; vertical-align: top;" width="226" height="40"></canvas></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-12 hidden-sm hidden-xs" >
+
+        <div class="row">
+          <div class="col-md-6">
+            <%= geo_chart current_user.phone_leads.group(:state).count, :library => {:backgroundColor => "transparent", region: "US", resolution: "provinces"}  %>
+          </div>
+          <div class="col-md-6">
+            <%= geo_chart current_user.phone_leads.group(:country).count, :library => {:backgroundColor => "transparent"}  %>
+          </div>
+
+        </div>
+
+
+        <div class="row" style="">
+          <div class="col-md-6">
+            <%= pie_chart current_user.social_leads.group(:social_network).count,:library => {:backgroundColor => "transparent", :legend => {:textStyle => {:color => "white"}}}   %>
+          </div>
+          <div class="col-md-6">
+            <%= bar_chart [["Email", current_user.email_leads.count],
+                           ["Phone", current_user.phone_leads.count],
+                           ["Web", current_user.social_leads.count]],
+                          :library => {:backgroundColor => "transparent", :legend => {:textStyle => {:color => "white"}}}   %>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+  </div>
+
+<%= render :partial => "layouts/footer" %>
+
+<%= stylesheet_link_tag 'sweetalert.css' %>
+<%= javascript_include_tag 'sweetalert.min.js' %>
+
+<script>
+  <% flash.each do |name, msg| %>
+
+  <% if msg.is_a?(String) and msg != "HIDE" %>
+
+  swal({
+    title: "<%= name.humanize.upcase %>",
+    text: "<%= msg %>",
+    confirmButtonText: "OK"
+  });
+
+  <% end %>
+
+  <% end %>
+</script>
+
+<script>
+
+  $.ajax({ url: "/progress.json", success: function(data){
+    //Update your dashboard gauge
+    $('#email_count').text(data.email_count);
+    $('#phone_count').text(data.phone_count);
+    $('#facebook_count').text(data.facebook_count);
+    $('#twitter_count').text(data.twitter_count);
+    $('#linkedin_count').text(data.linkedin_count);
+    $('#github_count').text(data.github_count);
+    $('#last_url').text(data.last_url);
+    $('#last_url_2').text(data.last_url);
+    $('#mileage').text(data.page_count);
+    $('#total_contacts').text(data.total_contacts);
+
+    //Setup the next poll recursively
+    poll();
+  }, dataType: "json"});
+
+
+  (function poll(){
+    setTimeout(function(){
+      $.ajax({ url: "/progress.json", success: function(data){
+        //Update your dashboard gauge
+        $('#email_count').text(data.email_count);
+        $('#phone_count').text(data.phone_count);
+        $('#facebook_count').text(data.facebook_count);
+        $('#twitter_count').text(data.twitter_count);
+        $('#linkedin_count').text(data.linkedin_count);
+        $('#github_count').text(data.github_count);
+        $('#last_url').text(data.last_url);
+        $('#last_url_2').text(data.last_url);
+        $('#mileage').text(data.page_count);
+        $('#total_contacts').text(data.total_contacts);
+
+        //Setup the next poll recursively
+        poll();
+      }, dataType: "json"});
+    }, 2500);
+  })();
+
+  document.getElementById("file_input").onchange = function() {
+    document.getElementById("file_form").submit();
+  };
+
+</script>

@@ -1,0 +1,74 @@
+before_script:
+  - echo ">> LOADING..."
+after_script:
+  - echo "-- FINISHED --"
+
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  script:
+    - bundle install --without development
+    - bundle exec rake db:setup RAILS_ENV=test
+    - bundle exec rake db:migrate RAILS_ENV=test
+    - bundle exec rake assets:precompile RAILS_ENV=test
+  only:
+    - master
+  tags:
+    - ci
+
+unit:
+  script:
+  - bundle exec rspec spec/models
+  - bundle exec rspec spec/workers
+  - bundle exec rspec spec/controllers
+  stage: test
+  only:
+    - master
+  except:
+    - development
+  tags:
+    - ci
+  allow_failure: false
+
+integration:
+  script:
+  - bundle exec rspec spec/features
+  stage: test
+  only:
+    - master
+  except:
+    - development
+  tags:
+    - ci
+  allow_failure: true
+
+#predeploy:
+#  script:
+#  - cap test deploy
+#  stage: deploy
+#  only:
+#    - master
+#  tags:
+#    - ci
+#  allow_failure: false
+#
+#deploy:
+#  script:
+#  - cap production deploy
+#  stage: deploy
+#  only:
+#    - master
+#  tags:
+#    - ci
+#  allow_failure: false
+
+variables:
+  DATABASE_URL: "postgres://postgres:postgres@localhost/contactrocket"
+  REDIS_URL: "redis://localhost:6379/0"
+  ELASTICSEARCH_URL: "search-contactrocket-4v6tk3c5rhd3plrfsh277f6lcu.us-east-1.es.amazonaws.com"
+  POSTGRES_DB: postgres
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: "postgres"

@@ -1,0 +1,11 @@
+#!/bin/bash -l
+set -e
+export RAILS_ENV=production
+export RACK_ENV=production
+export ELASTICSEARCH_URL=
+export REDIS_HOST=localhost
+export REDIS_HOST=localhost
+export REDIS_HOST=localhost
+export RDS_USERNAME=rocketeer
+export RDS_DB_NAME=contactrocket
+export COMPOSE_HTTP_TIMEOUT=300

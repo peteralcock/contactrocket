@@ -1,0 +1,35 @@
+<% @page_title = "Reports" %>
+
+<div class="page-header">
+  <h2>Reports</h2>  
+</div>
+
+<div><%= pluralize(@campaigns.size, 'campaign') %> launched</div>
+
+<table id="launched-campains" class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Client</th>
+      <th>Emails Sent</th>
+      <th>Clicks</th>
+      <th>Active</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @campaigns.each do |campaign| %>
+    <tr>
+      <td><%= campaign.decorate.report_icon %></td>      
+      <td><%= campaign.name %></td>
+      <td><%= campaign.sent %></td>
+      <td><%= campaign.clicks %></td>
+      <td><%= campaign.decorate.active_icon %></td>
+      <td class="actions">
+        <%= link_to(campaign.decorate.options_icon, stats_reports_path(id: campaign.id), 
+              class: 'btn btn-primary btn-xs') %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

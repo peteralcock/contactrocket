@@ -1,0 +1,101 @@
+<style>
+
+  td {
+    color:black;
+  }
+
+  tr {
+    color:black;
+  }
+
+  thead {
+    color:black;
+  }
+
+  span{
+    color:black;
+  }
+
+</style>
+
+<%= render 'layouts/topbar' %>
+<header class="side-header light-skin">
+  <%= render 'layouts/navigation' %>
+</header>
+<div class="main-content">
+
+
+  <div class="heading-sec">
+
+    <div class="row">
+      <div class="col-md-12" style="text-align: left;">
+        <div class="heading-profile" style="">
+          <h1 style="font-family: orbitron-light">Notifications</h1>
+          <span>The most recent activity on your account</span>
+        </div>
+      </div>
+    </div>
+  </div><!-- Top Bar Chart -->
+
+  <div class="panel-content">
+
+
+    <% if @contacts %>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="table-area">
+                <div class="table-responsive ">
+                  <table class="table table-responsive" >
+                    <thead>
+                    <tr>
+                      <th data-defaultsort='disabled'>Type</th>
+                      <th  ><i class="fa fa-envelope"></i>Subject</th>
+                      <th  ><i class="fa fa-crosshairs"></i> Date</th>
+                      <th>Score</th>
+                    </tr>
+                    </thead>
+                    <tbody >
+                    <% @notifications.each do |contact| %>
+                        <tr>
+                          <td width="5%">
+                            <%= instance[:type] %>
+                          </td>
+                          <td width="40%">
+                            <%= instance[:subject] %>
+                          </td>
+                          <td>
+                            <%= instance[:created_at] %>
+                          </td>
+                          <td width="15%">
+                            <%= contact.score %>%
+                          </td>
+                        </tr>
+                    <% end %>
+                    </tbody>
+
+                    <%= will_paginate @notifications %>
+
+                  </table>
+                </div>
+              </div>
+            </div>
+            <% if current_user.email_leads.count < 1 %> <h1 style="text-align: center; color:lightslategray;">You have no recent activity...</h1> <% end %>
+
+          </div>
+          <div class="col-md-8 column">
+            <div class="user-bar">
+              <a title="Export" href="/activity.csv" class="purple-skin"><i class="fa fa-download"></i> Export </a>
+              <a title="Reset" href="/reset/activity" class="red-skin"><i class="fa fa-remove"></i> Reset </a>
+            </div>
+          </div>
+        </div>
+
+    <% end %>
+
+  </div>
+  <%= render :partial => 'layouts/footer' %>
+
+
+</div>

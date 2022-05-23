@@ -1,0 +1,16 @@
+FROM contactrocket/www:latest
+RUN apt-get install -y xvfb sqlite3 libsqlite3-dev libqt5webkit5-dev \
+ libqtwebkit-dev xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic \
+ x11-apps libqt4-webkit libqt4-dev nodejs
+ENV INSTALL_PATH /app
+ENV RACK_ENV test
+ENV RAILS_ENV test
+ADD . $INSTALL_PATH
+WORKDIR $INSTALL_PATH
+RUN bundle install --without development
+RUN bundle exec rake db:drop
+RUN bundle exec rake db:create
+RUN bundle exec rake db:schema:load
+RUN bundle exec rake db:migrate
+RUN bundle exec rake db:seed
+RUN bundle exec rake assets:precompile

@@ -1,0 +1,220 @@
+
+<div class="main-content">
+  <div class="breadcrumbs">
+    <ul>
+      <li><a href="#/" title="">Home</a></li>
+      <li><a href="billing.html" title="">Billing</a></li>
+    </ul>
+  </div>
+
+  <div class="heading-sec">
+    <div class="row">
+      <div class="col-md-4 column">
+        <div class="heading-profile">
+          <h2>Billing</h2>
+          <span>Simple monthly plans. No hidden fees. Cancel anytime.</span>
+        </div>
+      </div>
+      <div class="col-md-8 column">
+        <div class="top-bar-chart">
+          <div class="quick-report">
+            <div class="quick-report-infos">
+              <p>Rocket Engines</p>
+              <h3><%= current_user.max_engines %>X</h3>
+            </div>
+            <span class="bar2">5,7,4,6,9,10,13,6,5,4,7,6,5,3</span>
+          </div>
+          <div class="quick-report">
+            <div class="quick-report-infos">
+              <p>New Contacts</p>
+              <h3><%= current_user.total_engines %></h3>
+            </div>
+            <span class="bar">2,3,7,4,6,9,5,4,3,4,6,4,2</span>
+          </div>
+        </div><!-- Top Bar Chart -->
+      </div>
+    </div>
+  </div><!-- Top Bar Chart -->
+
+  <div class="panel-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="billing-sec">
+          <div class="row">
+            <div class="col-md-6 field">
+              <label>Your Name <span>*</span> </label>
+              <input type="text"  />
+            </div>
+            <div class="col-md-6 field">
+              <label>Last Name <span>*</span> </label>
+              <input type="text"  />
+            </div>
+            <div class="col-md-12 field">
+              <label>Company Name <span>*</span> </label>
+              <input type="text"  />
+            </div>
+            <div class="col-md-6 field">
+              <label>Street Address <span>*</span> </label>
+              <input type="text"  />
+            </div>
+            <div class="col-md-6 field">
+              <label>Street Address 2<span>*</span> </label>
+              <input type="text"  />
+            </div>
+            <div class="col-md-6 field">
+              <label>Town / City<span>*</span> </label>
+              <input type="text"  />
+            </div>
+            <div class="col-md-6 field">
+              <label>State<span>*</span> </label>
+              <select>
+                <option>Choose your state</option>
+                <% $states.keys.each do |state_key| %>
+                <option><%= state_key %></option>
+                    <% end %>
+              </select>
+            </div>
+            <div class="col-md-6 field">
+              <label>Zip/Postal Code<span>*</span> </label>
+              <input type="text"  />
+            </div>
+            <div class="col-md-6 field">
+              <label>Email Address<span>*</span> </label>
+              <input type="text"  />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="widget-title">
+                <h3>Edit Account</h3>
+                <p>You can change your account information using the forms below:</p>
+              </div>
+            </div>
+            <div class="col-md-12 field">
+              <label>Username<span>*</span> </label>
+              <input type="text"  />
+            </div>
+            <div class="col-md-6 field">
+              <label>Password<span>*</span> </label>
+              <input type="password"  />
+            </div>
+            <div class="col-md-6 field">
+              <label>Retype Password<span>*</span> </label>
+              <input type="password"  />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="widget-title">
+                <h3>Shipping Address</h3>
+                <p>Where should we deliver our hilarious marketing material?</p>
+              </div>
+            </div>
+            <div class="col-md-12 field">
+              <label>Coupon Code<span>*</span> </label>
+              <input type="text"  />
+            </div>
+            <div class="col-md-6 field">
+              <label>Your Name<span>*</span> </label>
+              <input type="text"  />
+            </div>
+            <div class="col-md-6 field">
+              <label>Last Name<span>*</span> </label>
+              <input type="text"  />
+            </div>
+            <div class="col-md-6 field">
+              <label>Company Name<span>*</span> </label>
+              <input type="text"  />
+            </div>
+            <div class="col-md-6 field">
+              <label>Company Address<span>*</span> </label>
+              <input type="text"  />
+            </div>
+            <div class="col-md-6 field">
+              <label>Town / City<span>*</span> </label>
+              <input type="text"  />
+            </div>
+            <div class="col-md-6 field">
+              <label>Stats<span>*</span> </label>
+              <select>
+                <option>Choose your state</option>
+                <% $states.keys.each do |state_key| %>
+                    <option><%= state_key %></option>
+                <% end %>
+              </select>
+            </div>
+            <div class="col-md-6 field">
+              <label>Zip/Postal Code<span>*</span> </label>
+              <input type="text"  />
+            </div>
+            <div class="col-md-6 field">
+              <label>Email Address<span>*</span> </label>
+              <input type="text"  />
+            </div>
+            <div class="col-md-12 field">
+              <label>Other Notes<span>*</span> </label>
+              <textarea placeholder="Extra notes..."></textarea>
+            </div>
+          </div>
+          <div class="my-cart cart-total-sec">
+            <div class="cart-heading">
+              <h2>Product Total</h2>
+            </div>
+            <ul>
+              <li><p>Cart Subtotal</p><span>$580</span></li>
+              <li><p>Shipping</p><span>Free Shipping</span></li>
+              <li><p>Order Total</p><span>$580</span></li>
+            </ul>
+          </div>
+          <div class="payment">
+           <%= render :partial => "card" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- Panel Content -->
+
+</div><!-- Main Content -->
+<footer>
+  <div class="container">
+    <p>© 2015 Webinane Technologies Ltd.  Made with <i class="fa fa-heart"></i></p>
+    <ul>
+      <li><a href="#/" title="">Dashboard</a></li>
+      <li><a href="#/" title="">Widgets</a></li>
+      <li><a href="#/" title="">About us</a></li>
+      <li><a href="#/" title="">Contact us</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- Vendor: Javascripts -->
+<script src="js/jquery-2.1.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://maps.google.com/maps/api/js?sensor=false"></script>
+
+<!-- Our Website Javascripts -->
+<script src="js/app.js"></script>
+<script src="js/main.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    "use strict";
+
+    //*** Piety Mini Charts ***//
+    $(function() {
+      $(".bar").peity("bar", {
+        fill: ["#ff8484"],
+        height: ["40px"],
+        width: ["94px"]
+      })
+
+      $(".bar2").peity("bar", {
+        fill: ["#9797ff"],
+        height: ["40px"],
+        width: ["94px"]
+      })
+    });
+
+  });
+</script>

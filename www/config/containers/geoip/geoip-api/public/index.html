@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <script type="text/javascript"src="/client.js" type="text/javascript"></script>
+    <style>
+      dl {
+        clear: both;
+      }
+      dt { 
+        font-weight: bold;
+      }
+      dt, dd { 
+        margin: 0;
+        text-align: left;
+        min-width: 70px;
+        display: inline-block;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      /*
+       { ip: 1.2.3.4,
+          range: [ 3479299040, 3479299071 ],
+          country: 'US',
+          region: 'CA',
+          city: 'San Francisco',
+          ll: [37.7484, -122.4156] }
+        */
+
+      window.onload = function () {
+        var details = document.getElementById("details")
+        var success = function(ip, json) {
+          window.console && console.log('success', ip, json);
+          var html = '<dl><dt>IP</dt><dd>' + ip + '</dd></dl>';
+              html += '<dl><dt>Location</dt><dd>'+ json.city + ', ' + json.region + ', ' + json.country + '</dd></dl>';
+              html += '<dl><dt>Lat/Lon</dt><dd>(' + json.ll[0] + ',' + json.ll[1] + ')</dd></dl>';
+          details.innerHTML = html;
+        };
+        var error = function(ip, error) {
+          window.console && console.log('error', ip, error);        
+          var html = '<dl><dt>IP</dt><dd>' + ip + '</dd></dl>';
+              html += '<dl><dt>Error</dt><dd>' + error + '</dd></dl>';
+          details.innerHTML = html;
+        }
+
+        GeoIP.locate(success, error);
+      };
+    </script>
+    <h1>GeoIP Test Page</h1>
+    <div id="details">
+      Check the window debug console for output. 
+    </div>
+  </body>
+</html>

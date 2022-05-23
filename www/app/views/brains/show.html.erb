@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @brain.user_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @brain.name %>
+</p>
+
+<p>
+  <strong>Brain type:</strong>
+  <%= @brain.brain_type %>
+</p>
+
+<p>
+  <strong>Brain gender:</strong>
+  <%= @brain.brain_gender %>
+</p>
+
+<p>
+  <strong>Brain aiml:</strong>
+  <%= @brain.brain_aiml %>
+</p>
+
+<p>
+  <strong>Aiml:</strong>
+  <%= @brain.aiml_id %>
+</p>
+
+<p>
+  <strong>Speed:</strong>
+  <%= @brain.speed %>
+</p>
+
+<p>
+  <strong>Aiml file:</strong>
+  <%= @brain.aiml_file %>
+</p>
+
+<%= link_to 'Edit', edit_brain_path(@brain) %> |
+<%= link_to 'Back', brains_path %>

@@ -1,0 +1,128 @@
+<style>
+
+  td {
+    color:black;
+  }
+
+  tr {
+    color:black;
+  }
+
+  thead {
+    color:black;
+  }
+
+  span{
+    color:black;
+  }
+
+  .main-content {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 870px;
+  }
+
+</style>
+<%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+<%= stylesheet_link_tag "bootstrap-sortable.css" %>
+
+<%= render 'layouts/topbar' %>
+<header class="side-header light-skin">
+  <%= render 'layouts/navigation' %>
+</header>
+<div class="main-content">
+
+
+  <div class="heading-sec">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="heading-profile">
+          <h1><span style="color:black;"><i class="fa fa-crosshairs" style="color: red"></i> RECENT TARGETS </span></h1>
+          <span style="color:grey;">You downloaded <%= current_user.websites.count %> websites this week and discovered <%= current_user.total_contacts %> new contacts </span>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="col-md-12 column">
+         </div>
+      </div>
+    </div><!-- Top Bar Chart -->
+  </div>
+
+
+  <div class="panel-content">
+
+
+    <% if @websites %>
+
+        <div class="row" style="">
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="table-area">
+                <div class="table-responsive ">
+                  <table class="table table-responsive sortable">
+                    <thead>
+                    <tr>
+                      <th data-defaultsort='disabled'> </th>
+                      <th><i class="fa fa-bullseye"></i> Website</th>
+                      <th class=" hidden-xs" ><i class="fa fa-phone"></i> Numbers</th>
+                      <th class=" hidden-xs" ><i class="fa fa-envelope"></i> Addresses</th>
+                      <th class=" hidden-xs" ><i class="fa fa-hashtag"></i> Profiles</th>
+                    </tr>
+                    </thead>
+                    <tbody >
+                    <% @websites.each do |website| %>
+                        <tr>
+
+                          <td width="20%" style="font-size: 16px;">
+                            <%= image_tag website.image_url || "/images/avatar-blank.jpg" %>
+                          </td>
+
+                          <td width="30%" style="font-size: 16px;">
+                            <h5><%= link_to website.domain, "http://#{website.domain}" %></h5>
+                            <hr>
+                            <p><%= website.meta_keywords %></p>
+                          </td>
+
+                          <td width="15%" style="font-size: 14px;" class="hidden-sm hidden-xs" >
+                            <b><% website.email_leads.count || "?" %></b>
+                          </td>
+
+                          <td width="15%" style="font-size: 14px;" class="hidden-sm hidden-xs" >
+                            <b><% website.phone_leads.count || "?" %></b>
+                          </td>
+                          <td width="15%" style="font-size: 14px;" class="hidden-sm hidden-xs" >
+                            <b><% website.social_leads.count || "?"  %></b>
+
+                          </td>
+                        </tr>
+                    <% end %>
+                    </tbody>
+
+
+                  </table>
+                </div>
+              </div>
+            </div>
+            <% if current_user.websites.count < 1 %>
+                <h1 style="text-align: center; color:lightslategray;"><i class="fa fa-question-circle"></i></h1>
+            <% end %>
+          </div>
+
+          <% if @websites %><br><br><div class="pull-left"><%= will_paginate @websites %></div><% end %>
+
+        </div>
+
+    <% end %>
+
+  </div>
+  <%= render :partial => 'layouts/footer' %>
+
+
+</div>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src='/js/moment.min.js'></script>
+<script src='/js/bootstrap-sortable.js'></script>

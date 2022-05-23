@@ -1,0 +1,19 @@
+<% @page_title = "Update Template" %>
+
+<% if @campaign.present? %>
+  <ol class="breadcrumb">
+    <li><%= link_to "Campaigns", campaigns_path %></li>
+    <li><%= link_to "Campaign", campaign_path(@campaign) %></li>
+  </ol>
+<% end %>
+
+<h2>Update Template</h2>
+
+<div class="template update">
+  <%= nested_form_for @template, :html => {:multipart => true} do |f| %>
+    <%= render(:partial => "form", :locals => {:f => f}) %>
+    <%= hidden_field_tag :campaign_id, params[:campaign_id] %>
+
+    <%= submit_tag("Update Template", class: 'btn btn-primary btn-block pad-bot') %>
+  <% end %>
+</div>

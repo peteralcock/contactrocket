@@ -1,0 +1,144 @@
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=PT+Sans:700,400' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" href="/css/front-end.css" type="text/css" /><!-- Style -->
+<link rel="stylesheet" href="/css/responsive.css" type="text/css" /><!-- Responsive -->
+<link href="/css/owl.carousal.css" rel="stylesheet">
+
+
+
+ <div class="header-sec" id="home"  style="background-image: url(/images/launchbg.jpg)">
+  <div class="light-blue">
+    <div class="fixed-img sec-bg1"></div>
+    <header id="home">
+
+      <ul>
+        <li><a href="https://facebook.com/contactrocket" title=""><i class="fa fa-facebook"></i></a></li>
+        <li><a href="https://twitter.com/contactrocket" title=""><i class="fa fa-twitter"></i></a></li>
+        <li><a href="https://plus.google.com/+ContactRocket" title=""><i class="fa fa-google-plus"></i></a></li>
+        <li><a href="https://www.linkedin.com/company/contactrocket" title=""><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+
+      <h1><i>LAUNCH</i> FASTER</h1>
+      <h3><i>Automate marketing campaigns</i> with light-speed prospecting</h3>
+
+    </header>
+    <div class="header-mock-up">
+      <div class="row" style="text-align: center;">
+      <iframe   style="padding-bottom:50px;" width="600" scrolling="no" height="380" frameborder="0" name="wistia_embed" class="wistia_embed" allowtransparency="true" src="https://fast.wistia.net/embed/iframe/jfcoikfyso?playerColor=81b7db&version=v1&videoHeight=304&videoWidth=540&videoFoam=false"></iframe>
+      <script src='https://fast.wistia.com/static/iframe-api-v1.js'></script>
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div><!--  Header Sec -->
+
+
+
+<div class="container" style=" ">
+
+  <div class="row block" id="service">
+    <div class="headline" style="display:none"><h2 style="text-align: center;">Download leads from any public website in less than 60 seconds.</h2></div>
+    <br><br>
+    <div class="col-md-4">
+      <div class="our-services">
+        <span><i class="fa fa-mobile"></i></span>
+        <h3>Click2Dial (NEW!)</h3>
+        <p>Get straight to the pitch with just one click without ever having to leave the comfort of your browser.</p>
+       </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="our-services">
+        <span><i class="fa fa-check"></i></span>
+        <h3>Email Validation</h3>
+        <p>Protect your newsletter and your domain from blacklists with our contact validation system.</p>
+
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="our-services">
+        <span><i class="fa fa-cloud"></i></span>
+        <h3>Cloud CRM</h3>
+        <p>Export web leads into your own CRM, securely hosted on Amazon Web Services. Free to use at anytime.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<section id="newsletter" style="padding-bottom:100px;">
+  <div class="block" style="padding-top:100px; padding-bottom: 200px;">
+    <div class="black">
+      <div class="fixed-img sec-bg3"></div>
+      <div class="container">
+        <div class="row">
+          <div class="newsletter">
+            <h3>READY FOR LIFTOFF?<i> TAKE IT FOR A SPIN!</i> </h3>
+            <p>Align sales and marketing with our simplified CRM. Free to use anytime. No credit card required.</p>
+            <form style="text-align: center;">
+               <a href="/register" title="">START ENGINE</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+<%= render :partial => "layouts/footer" %>
+
+<!-- Script -->
+<script src="js/modernizr.custom.17475.js"></script><!-- Modernizer -->
+<script src="js/front-end.js"></script><!-- Script -->
+<script src="js/owl.carousel.min.js"></script><!-- Script -->
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    "use strict";
+
+    $(".slider").owlCarousel({
+      autoplay:false,
+      autoplayTimeout:3000,
+      smartSpeed:2000,
+      loop:false,
+      dots:false,
+      nav:false,
+      margin:0,
+      animateIn:'fadeIn',
+      animateOut:'fadeOut',
+      items:1,
+      singleItem:true
+    });
+
+    $(function() {
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({
+              scrollTop: target.offset().top
+            }, 1000);
+            return false;
+          }
+        }
+      });
+    });
+
+  });
+</script>

@@ -1,0 +1,16 @@
+# FROM 1234567890.dkr.ecr.us-east-1.amazonaws.com/contactrocket/base
+FROM ruby:2.2.5
+RUN apt-get update -y && apt-get upgrade -y
+RUN apt-get upgrade -y && apt-get install -y build-essential g++ make cmake autoconf automake libcurl3 zlib1g-dev libqt4-dev libpq-dev imagemagick libmagickwand-dev libkrb5-dev libicu-dev libssl-dev libyaml-dev libreadline-dev zlib1g-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev libqtwebkit-dev bison libssl-dev libyaml-dev libc6-dev
+RUN apt-get install -y nodejs npm
+ENV RAILS_ROOT /app
+RUN mkdir -p $RAILS_ROOT
+WORKDIR /app
+COPY Gemfile Gemfile
+COPY Gemfile.lock Gemfile.lock
+RUN bundle install
+ENV RAILS_ENV production
+
+COPY . .
+CMD ["config/containers/app_cmd.sh"]
+

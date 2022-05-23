@@ -1,0 +1,15 @@
+#!/bin/bash
+set -e
+
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
+    CREATE ROLE kong WITH LOGIN CREATEDB;
+    CREATE ROLE rocketeer WITH LOGIN CREATEDB;
+    CREATE DATABASE contactrocket;
+    CREATE DATABASE kong;
+    CREATE ROLE kong WITH LOGIN CREATEDB CREATEROLE;
+    GRANT ALL PRIVILEGES ON DATABASE kong TO kong;
+    GRANT ALL PRIVILEGES ON DATABASE contactrocket TO rocketeer;
+    ALTER USER kong WITH PASSWORD 'kong';
+    ALTER USER rocketeer WITH PASSWORD 'postgres';
+
+EOSQL

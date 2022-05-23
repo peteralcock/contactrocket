@@ -1,0 +1,25 @@
+
+
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  port: 5432
+  username: postgres
+  password: postgres
+  database: contactrocket
+  schema_search_path: public,shared_extensions
+  pool: 10
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  port: 5432
+  username: postgres
+  password: postgres
+  database: contactrocket
+  schema_search_path: public,shared_extensions
+  pool: 10
+

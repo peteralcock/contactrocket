@@ -1,0 +1,107 @@
+<style>
+  h3 {
+    color:white;
+  }
+
+  label {
+    color:black;
+  }
+  input {
+    color:black;
+  }
+  body {
+    color:black;
+  }
+
+</style>
+<div class="main-content">
+
+<div class="account-user-sec registration-sec">
+    <div class="account-sec">
+        <div class="account-top-bar">
+            <div class="container">
+              <div class="logo">
+                <a href="/" title="" style="font-family: orbitron-light; color:white">
+                  <i class="fa fa-rocket"></i> ContactRocket<b style="font-size: 8px;">™</b> </a>
+              </div>
+                <ul class="account-header-link">
+                    <li><a title="" href="/login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="acount-sec">
+            <div class="container">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="account-detail">
+                      <h2 style="color:white;">Autopilot for your CRM</h2>
+                      <hr>
+
+                      <ul>
+                        <li>
+                          <h3><i class="fa  fa-rocket"></i>Web Prospector</h3>
+                          <p style="color:white">Download web leads from any website</p>
+                        </li>
+                        <li>
+                          <h3><i class="fa fa-check"></i>Email Validator</h3>
+                          <p style="color:white">Keep your domain safe from blacklists</p>
+                        </li>
+                        <li>
+                          <h3><i class="fa fa-bar-chart"></i>Lead Analytics</h3>
+                          <p style="color:white">Tap into your top target audiences</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                    <div class="col-md-8">
+                        <div class="contact-sec">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="widget-title">
+                                        <h2>Pssst! ...new here?</h2>
+                                        <span>It's free to try. No credit card required.</span>
+                                    </div><!-- Widget title -->
+                                    <div class="account-form">
+
+                                        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f| %>
+                                            <div class="row">
+                                                <%= devise_error_messages! %>
+                                                <div class="col-md-12 feild">
+                                                  <%= f.label "What's your email address?" %>
+                                                  <%= f.text_field :email   %>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <label><input checked type="checkbox" id="agree_box"/> I agree to the <a title="Terms of Service" href="/terms" >terms & conditions</a></label>
+                                                </div>
+                                                <div class="feild col-md-6">
+                                                    <%= f.submit 'GET STARTED', :class => 'button right' %>
+                                                </div>
+                                            </div>
+                                        <% end %>
+                                    </div>
+                                    <div class="more-option">
+                                        <span>OR</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="creat-an-account" >
+                                        <span>Already a member?</span>
+                                        <a href="/users/sign_in" title="">Login Now</a>
+
+                                    </div><!-- Create an account -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- Account Sec -->
+  <%= render :partial => "layouts/footer" %>
+</div>
+</div><!-- Main Content -->
+
+

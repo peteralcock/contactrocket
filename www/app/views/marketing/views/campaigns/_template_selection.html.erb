@@ -1,0 +1,24 @@
+<div class="panel panel-default">
+  <div class="panel-heading" data-toggle="collapse" data-target="#collapseTwo">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+        Template Selection
+      </a>
+    </h4>
+  </div>
+  <div id="collapseTwo" class="panel-collapse collapse">
+    <div class="panel-body">
+      <div class="row top-buffer">
+        <div class="col-xs-3">
+          <p>Scenario</p>
+        </div>
+        <div class="col-xs-1">
+          <span class="glyphicon glyphicon-question-sign" title="Choose the Template to assign to the campaign. If the template is not listed, you must create a new template first"></span>
+        </div>
+        <div class="col-xs-8">
+          <%= f.select(:template_id, ::Template.all.map{|m| [m.name, m.id]},{}, class: 'form-control') %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

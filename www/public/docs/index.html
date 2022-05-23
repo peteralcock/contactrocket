@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="identif.ai is the leading machine-learning, computer vision and natural language processing API.">
+    <meta name="keywords" content="ContactRocket, Identif.ai, API, Machine Learning, Computer Vision, NLP, NER">
+
+    <title>API Documentation</title>
+
+    <!-- Styles -->
+    <link href="/docs/assets/css/theDocs.all.min.css" rel="stylesheet">
+    <link href="/docs/assets/css/custom.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400' rel='stylesheet' type='text/css'>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="/docs/assets/img/favicon.ico">
+  </head>
+
+  <body data-spy="scroll" data-target=".sidebar" data-offset="200">
+
+    <header class="site-header sticky navbar-transparent">
+
+      <!-- Top navbar & branding -->
+      <nav class="navbar navbar-default">
+        <div class="container">
+
+          <!-- Toggle buttons and brand -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+              <span class="glyphicon glyphicon-option-vertical"></span>
+            </button>
+
+            <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="http://10x.ai"><img src="/docs/assets/img/logo.png" alt="logo"></a>
+          </div>
+          <!-- END Toggle buttons and brand -->
+
+          <!-- Top navbar -->
+          <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active"><a href="index.html">API Documentation</a></li>
+              <li><a href="/faq">FAQ</a></li>
+              <li><a href="mailto:support@identif.ai">Support</a></li>
+              <li class="hero"><a href="https://your-server.net/pricing">Pricing</a></li>
+            </ul>
+          </div>
+          <!-- END Top navbar -->
+
+        </div>
+      </nav>
+      <!-- END Top navbar & branding -->
+
+      <!-- Banner -->
+      <div class="banner auto-size" style="background-color: #5cc7b2">
+        <div class="container text-white">
+          <h1><strong>API</strong> documentation</h1>
+          <h5>You can see an example of each method at the top of each section. Follow the code to see how it's executed.</h5>
+        </div>
+      </div>
+      <!-- END Banner -->
+
+    </header>
+
+
+
+    <main class="container">
+      <div class="row">
+
+        <!-- Sidebar -->
+        <aside class="col-sm-3 sidebar sidebar-line">
+
+          <ul class="nav sidenav dropable sticky">
+            <li><a href="#html-structure">Overview</a></li>
+            <li><a href="#variations">Pricing</a></li>
+            <li><a href="#auth">Authentication</a></li>
+
+            <li>
+              <a href="#title1">Services</a>
+              <ul>
+                <li><a href="#subtitle1">Image</a></li>
+                <li><a href="#subtitle2">Text</a></li>
+                <li><a href="#subtitle3">Email</a></li>
+                <li><a href="#subtitle4">Phone</a></li>
+                <li><a href="#subtitle5">Website</a></li>
+              </ul>
+            </li>
+            <li><a href="#title2">Examples</a></li>
+          </ul>
+
+        </aside>
+        <!-- END Sidebar -->
+
+
+        <!-- Main content -->
+        <article class="col-sm-9 main-content" role="main">
+
+          <p class="lead">Maybe you want to have a single page documentation and use sidebar navigation for navigating inside the page. So this sample layouts are for you. Even maybe you'd like to use top navigation bar for navigating between your pages.</p>
+
+          <section>
+            <h2 id="html-structure">Overview</h2>
+            <p>While this page is enough to see through its code and get start with it, but you can see the page code structure in below. Make sure you'll have <code>data-spy=&quot;scroll&quot; data-target=&quot;.sidebar&quot; data-offset=&quot;200&quot;</code> attribute in <code>&lt;body&gt;</code> tag. Also, <code>.sidebar</code> has a <code>.sidebar-line</code> class.</p>
+          </section>
+
+
+          <section>
+            <h2 id="variations">Pricing</h2>
+            <p>Certain functionality requires a monthly subscription.</p>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="promo">
+                  <h3>Startup</h3>
+                  <a class="btn btn-teal" href="layout_single-page-1.html">See Pricing</a>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="promo">
+                  <h3>Advantage</h3>
+                  <a class="btn btn-teal" href="index.html">See Pricing</a>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="promo">
+                  <h3>Enterprise</h3>
+                  <a class="btn btn-teal" href="layout_single-page-3.html">See Pricing</a>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+
+          <section>
+            <h2 id="title1">Image API</h2>
+
+            <h3 id="subtitle1">Optical Character Recognition</h3>
+
+              <h3 id="subtitle1">Scene Recognition</h3>
+
+              <h3 id="subtitle1">Facial Recognition</h3>
+
+              <h3 id="subtitle1">Object Recognition</h3>
+
+              <h3 id="subtitle1">Reverse Image Search</h3>
+
+              <h3 id="subtitle1">Image Comparision</h3>
+
+
+
+            <pre class="line-numbers">
+              <code class="language-markup">
+                $ curl -X POST -H "Content-Type: application/json" -d '{"img_url":"http://bit.ly/ocrimage","engine":"tesseract"}' http://api.your-server.net/ocr
+              </code>
+            </pre>
+
+            <h3 id="subtitle2">Named Entity Recognition</h3>
+
+            <h2>Image Similarity</h2>
+            <p>All request parameters are specified via <code>application/x-www-form-urlencoded</code> or <code>multipart/form-data</code>.</p>
+            <ul>
+              <li><a href="#post-add">POST <code>/add</code></a></li>
+              <li><a href="#delete-delete">DELETE <code>/delete</code></a></li>
+              <li><a href="#post-search">POST <code>/search</code></a></li>
+              <li><a href="#post-compare">POST <code>/compare</code></a></li>
+              <li><a href="#get-count">GET <code>/count</code></a></li>
+              <li><a href="#get-list">GET <code>/list</code></a></li>
+              <li><a href="#get-ping">GET <code>/ping</code></a></li>
+            </ul>
+            <hr>
+            <h3>POST <code>/add</code></h3>
+            <p>Adds an image signature to the database.</p>
+            <h4>Parameters</h4>
+            <ul>
+              <li><p><strong>url</strong> or <strong>image</strong> <em>(required)</em></p>
+                <p>The image to add to the database. It may be provided as a URL via <code>url</code> or as a <code>multipart/form-data</code> file upload via <code>image</code>.</p>
+              </li>
+              <li><p><strong>filepath</strong> <em>(required)</em></p>
+                <p>The path to save the image to in the database. If another image already exists at the given path, it will be overwritten.</p>
+              </li>
+            </ul>
+            <h4>Example Response</h4>
+<pre><code>{
+  "status": "ok",
+  "error": [],
+  "method": "add",
+  "result": []
+  }
+</code></pre>
+            <hr>
+            <h3>DELETE <code>/delete</code></h3>
+            <p>Deletes an image signature from the database.</p>
+            <h4>Parameters</h4>
+            <ul>
+              <li><p><strong>filepath</strong> <em>(required)</em></p>
+                <p>The path of the image signature in the database.</p>
+              </li>
+            </ul>
+            <h4>Example Response</h4>
+<pre><code>{
+  "status": "ok",
+  "error": [],
+  "method": "delete",
+  "result": []
+  }
+</code></pre>
+            <hr>
+            <h3>POST <code>/search</code></h3>
+            <p>Searches for a similar image in the database. Scores range from 0 to 100, with 100 being a perfect match.</p>
+            <h4>Parameters</h4>
+            <ul>
+              <li><p><strong>url</strong> or <strong>image</strong> <em>(required)</em></p>
+                <p>The image to add to the database. It may be provided as a URL via <code>url</code> or as a <code>multipart/form-data</code> file upload via <code>image</code>.</p>
+              </li>
+              <li><p><strong>all_orientations</strong> <em>(default: true)</em></p>
+                <p>Whether or not to search for similar 90 degree rotations of the image.</p>
+              </li>
+            </ul>
+            <h4>Example Response</h4>
+<pre><code>{
+  "status": "ok",
+  "error": [],
+  "method": "search",
+  "result": [
+  {
+  "score": 99.0,
+  "filepath": "http://static.wixstatic.com/media/0149b5_345c8f862e914a80bcfcc98fcd432e97.jpg_srz_614_709_85_22_0.50_1.20_0.00_jpg_srz"
+  }
+  ]
+  }
+</code></pre>
+            <hr>
+            <h3>POST <code>/compare</code></h3>
+            <p>Compares two images, returning a score for their similarity. Scores range from 0 to 100, with 100 being a perfect match.</p>
+            <h4>Parameters</h4>
+            <ul>
+              <li><p><strong>url1</strong> or <strong>image1</strong>, <strong>url2</strong> or <strong>image2</strong> <em>(required)</em></p>
+                <p>The images to compare. They may be provided as a URL via <code>url1</code>/<code>url2</code> or as a <code>multipart/form-data</code> file upload via <code>image1</code>/<code>image2</code>.</p>
+              </li>
+            </ul>
+            <h4>Example Response</h4>
+<pre><code>{
+  "status": "ok",
+  "error": [],
+  "method": "compare",
+  "result": [
+  {
+  "score": 99.0
+  }
+  ]
+  }
+</code></pre>
+            <hr>
+            <h3>GET <code>/count</code></h3>
+            <p>Count the number of image signatures in the database.</p>
+            <h4>Example Response</h4>
+<pre><code>{
+  "status": "ok",
+  "error": [],
+  "method": "list",
+  "result": [420]
+  }
+</code></pre>
+            <hr>
+            <h3>GET <code>/list</code></h3>
+            <p>Lists the file paths for the image signatures in the database.</p>
+            <h4>Parameters</h4>
+            <ul>
+              <li><p><strong>offset</strong> <em>(default: 0)</em></p>
+                <p>The location in the database to begin listing image paths.</p>
+              </li>
+              <li><p><strong>limit</strong> <em>(default: 20)</em></p>
+                <p>The number of image paths to retrieve.</p>
+              </li>
+            </ul>
+            <h4>Example Response</h4>
+<pre><code>{
+  "status": "ok",
+  "error": [],
+  "method": "list",
+  "result": [
+  "http://img.youtube.com/vi/iqPqylKy-bY/0.jpg",
+  "https://i.ytimg.com/vi/zbjIwBggt2k/hqdefault.jpg",
+  "https://s-media-cache-ak0.pinimg.com/736x/3d/67/6d/3d676d3f7f3031c9fd91c10b17d56afe.jpg"
+  ]
+  }
+</code></pre>
+
+
+</section>
+          <section>
+            <h2 id="title1">Text API</h2>
+            <p>Ut vitae sagittis ex. In porttitor ante in nunc ultrices malesuada. Praesent iaculis odio vitae volutpat tempus. Nullam a sodales lorem, nec pellentesque odio. Praesent ullamcorper nisl commodo justo imperdiet dignissim. Duis purus magna, congue sit amet varius condimentum, dapibus tristique urna. Aliquam congue molestie tempor. Curabitur vel arcu vel nibh euismod porttitor. Sed a dolor maximus ex tempus pharetra rhoncus et nulla. Integer dolor ex, lobortis ac leo non, dapibus cursus ligula. Fusce sed ultrices urna, vel tincidunt mi. Nullam neque dolor, tempor nec lorem vitae, scelerisque consectetur quam.</p>
+            <p>Fusce porttitor diam mauris, in fringilla elit euismod non. Aliquam non justo suscipit, pellentesque felis quis, egestas ante. Nunc quis imperdiet mauris, vitae cursus ante. Aenean vel efficitur ante, ullamcorper tempus massa. Integer ornare urna vitae quam semper fermentum. Mauris in dolor tempus, ultricies quam ac, lacinia nisl. Donec vitae ante sem.</p>
+
+            <h3 id="subtitle1">Natural Language Processing</h3>
+            <p>Natural Language Processing and Named Entity Recognition Nulla nec leo sit amet enim vestibulum imperdiet. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer ac purus ac nisl scelerisque feugiat. Sed ultricies rhoncus congue. Vivamus sagittis, ligula vitae ornare pretium, lectus tellus mattis leo, non ultricies urna odio eu justo. Suspendisse euismod varius ante sed vehicula. Phasellus dignissim hendrerit auctor. Nulla et vulputate ipsum. Aenean ultricies sed libero ac finibus. Donec ornare vestibulum orci, non porta dui pharetra quis. Maecenas luctus risus velit. Ut in aliquam urna. Ut luctus lorem in massa egestas, a mollis diam auctor. Maecenas mollis dui eu ipsum dictum fringilla. Nunc nisl magna, vestibulum vel purus eu, feugiat luctus elit.</p>
+            <p>Phasellus dictum magna eget enim suscipit ornare. Sed in mollis nibh. Quisque odio tortor, molestie eget ullamcorper a, aliquam faucibus nisi. Sed mi risus, semper tincidunt ultrices ac, aliquet vel elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed at mi bibendum, congue risus ac, eleifend ex. Sed malesuada eros eget purus varius molestie. Pellentesque aliquet sapien nec turpis tincidunt vehicula. Vestibulum nisi nulla, vulputate ac nibh quis, feugiat rhoncus nunc. Nullam et magna tempus lacus tincidunt laoreet non in ex. Donec auctor accumsan iaculis. Duis cursus eleifend efficitur. Cras placerat nisi magna, at varius sem bibendum sed.</p>
+
+            <pre class="line-numbers">
+              <code class="language-markup">
+                $ curl -X POST -H "Content-Type: application/json" -d '{"img_url":"http://bit.ly/ocrimage","engine":"tesseract"}' http://api.your-server.net/ocr
+              </code>
+            </pre>
+
+            <h3 id="subtitle2">Named Entity Recognition</h3>
+            <p> Named Entity Recognition Integer egestas ante id justo mollis feugiat ac vel metus. Nunc pulvinar scelerisque faucibus. Aenean at libero hendrerit, feugiat felis suscipit, facilisis justo. Praesent laoreet rutrum velit vitae facilisis. Fusce ac consectetur leo. Praesent dapibus interdum arcu, et hendrerit mi imperdiet eget. Morbi volutpat, leo id interdum aliquet, massa justo vestibulum nisl, eget posuere velit diam ac nibh. Duis tellus enim, porttitor id lectus vitae, tristique congue odio. Duis elementum porttitor nibh et porta. Suspendisse potenti.</p>
+            <p>Ut vitae sagittis ex. In porttitor ante in nunc ultrices malesuada. Praesent iaculis odio vitae volutpat tempus. Nullam a sodales lorem, nec pellentesque odio. Praesent ullamcorper nisl commodo justo imperdiet dignissim. Duis purus magna, congue sit amet varius condimentum, dapibus tristique urna. Aliquam congue molestie tempor. Curabitur vel arcu vel nibh euismod porttitor. Sed a dolor maximus ex tempus pharetra rhoncus et nulla. Integer dolor ex, lobortis ac leo non, dapibus cursus ligula. Fusce sed ultrices urna, vel tincidunt mi. Nullam neque dolor, tempor nec lorem vitae, scelerisque consectetur quam.</p>
+
+            <h2>Service Endpoints</h2>
+            <p>All request parameters are specified via <code>application/json</code></p>
+            <ul>
+              <li><a href="#post-nlp">POST <code>/text/nlp</code></a></li>
+              <li><a href="#post-sentiment">POST <code>/text/sentiment</code></a></li>
+              <li><a href="#post-compare">POST <code>/text/emotion</code></a></li>
+              <li><a href="#post-reading">POST <code>/text/reading</code></a></li>
+              <li><a href="#post-summary">POST <code>/text/summary</code></a></li>
+
+            </ul>
+            <hr>
+            <h3>POST <code>/text/nlp</code></h3>
+            <p>Adds an image signature to the database.</p>
+            <h4>Parameters</h4>
+            <ul>
+              <li><p><strong>text</strong> <em>(required)</em></p>
+                <p>The text to parse using Natural Language Processing</p>
+              </li>
+
+            </ul>
+            <h4>Example Response</h4>
+<pre><code>{
+  "status": "ok",
+  "error": [],
+  "method": "add",
+  "result": []
+  }
+</code></pre>
+            <hr>
+            <h3>POST <code>/text/emotion</code></h3>
+            <p>Detects emotions within in a given body of text.</p>
+            <h4>Parameters</h4>
+            <ul>
+              <li><p><strong>text</strong> <em>(required)</em></p>
+                <p>The text you would like to have analyzed.</p>
+              </li>
+            </ul>
+            <h4>Example Response</h4>
+<pre><code>
+  {"score":3,"comparative":1,"tokens":["i","am","happy"],"words":["happy"],"positive":["happy"],"negative":[]}
+</code></pre>
+
+
+            <hr>
+              <h3>POST <code>/text/education</code></h3>
+              <p>Returns reading level/difficulty of a given body of text.</p>
+              <h4>Parameters</h4>
+              <ul>
+                  <li><p><strong>text</strong> <em>(required)</em></p>
+                      <p>The text for which you would like to calculate reading level.</p>
+                  </li>
+              </ul>
+              <h4>Example Response</h4>
+<pre><code>
+    {"score":3,"comparative":1,"tokens":["i","am","happy"],"words":["happy"],"positive":["happy"],"negative":[]}
+</code></pre>
+              <hr>
+
+            <h3>POST <code>/text/sentiment</code></h3>
+            <p>Calculates sentiment found in a body of text</p>
+            <h4>Parameters</h4>
+            <ul>
+              <li><p><strong>text</strong> <em>(required)</em></p>
+                <p>The text you would like to have analyzed.</p>
+              </li>
+            </ul>
+            <h4>Example Response</h4>
+<pre><code>
+    {"score":3,"comparative":1,"tokens":["i","am","happy"],"words":["happy"],"positive":["happy"],"negative":[]}
+</code></pre>
+              <hr>
+
+              <h3>POST <code>/text/summary</code></h3>
+              <p>Summarizes a given body of text into a given number of sentences.</p>
+              <h4>Parameters</h4>
+              <ul>
+                  <li><p><strong>text</strong> <em>(required)</em></p>
+                      <p>The text you would like to have analyzed.</p>
+                  </li>
+                  <li><p><strong>sentences</strong> <em>(required)</em></p>
+                      <p>The number of sentences into which you would like to summarize the given text.</p>
+                  </li>
+              </ul>
+              <h4>Example Response</h4>
+<pre><code>
+    {"score":3,"comparative":1,"tokens":["i","am","happy"],"words":["happy"],"positive":["happy"],"negative":[]}
+</code></pre>
+          </section>
+
+
+
+
+        </article>
+        <!-- END Main content -->
+      </div>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <p>&copy; 2016 Velo Inc. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <ul class="footer-menu">
+              <li><a href="mailto:support@your-server.net">Support</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END Footer -->
+
+    <!-- Scripts -->
+    <script src="/docs/assets/js/theDocs.all.min.js"></script>
+    <script src="/docs/assets/js/custom.js"></script>
+
+  </body>
+</html>

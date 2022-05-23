@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @bot.user_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @bot.name %>
+</p>
+
+<p>
+  <strong>Bot type:</strong>
+  <%= @bot.bot_type %>
+</p>
+
+<p>
+  <strong>Dict file:</strong>
+  <%= @bot.dict_file %>
+</p>
+
+<p>
+  <strong>Aiml:</strong>
+  <%= @bot.aiml_id %>
+</p>
+
+<p>
+  <strong>Brain:</strong>
+  <%= @bot.brain_id %>
+</p>
+
+<p>
+  <strong>Bot iq:</strong>
+  <%= @bot.bot_iq %>
+</p>
+
+<p>
+  <strong>Brain speed:</strong>
+  <%= @bot.brain_speed %>
+</p>
+
+<%= link_to 'Edit', edit_bot_path(@bot) %> |
+<%= link_to 'Back', bots_path %>

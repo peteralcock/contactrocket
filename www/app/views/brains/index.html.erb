@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Brains</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Name</th>
+      <th>Brain type</th>
+      <th>Brain gender</th>
+      <th>Brain aiml</th>
+      <th>Aiml</th>
+      <th>Speed</th>
+      <th>Aiml file</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @brains.each do |brain| %>
+      <tr>
+        <td><%= brain.user_id %></td>
+        <td><%= brain.name %></td>
+        <td><%= brain.brain_type %></td>
+        <td><%= brain.brain_gender %></td>
+        <td><%= brain.brain_aiml %></td>
+        <td><%= brain.aiml_id %></td>
+        <td><%= brain.speed %></td>
+        <td><%= brain.aiml_file %></td>
+        <td><%= link_to 'Show', brain %></td>
+        <td><%= link_to 'Edit', edit_brain_path(brain) %></td>
+        <td><%= link_to 'Destroy', brain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Brain', new_brain_path %>

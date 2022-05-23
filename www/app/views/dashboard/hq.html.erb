@@ -1,0 +1,157 @@
+<style>
+  .cell {
+    padding-top: 5px;
+    margin-top: 0px;
+  }
+
+  .main-content {
+    background: url(/images/dashboard.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 2400px;
+  }
+  .widget {
+    background-color:transparent;
+    background:transparent;
+    color:white;
+  }
+
+  .mini-stats {
+    background:transparent;
+    color:white;
+  }
+
+  a {
+    color:white;
+  }
+
+  .widget-box {
+
+    background-color:transparent;
+    background:transparent;
+    color:white;
+  }
+  p {
+    color:white;
+  }
+  h2 {
+    color:white;
+  }
+  h4 {
+    color:white;
+  }
+</style>
+
+
+<%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+<%= stylesheet_link_tag 'search_results.css' %>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<%= render 'layouts/topbar' %>
+<header class="side-header light-skin">
+  <%= render 'layouts/navigation' %>
+</header>
+<div class="main-content" style="max-height: 680px;">
+
+
+  <%= render :partial => "layouts/messages" %>
+
+  <div class="heading-sec">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-12" >
+
+          <div class="row" style="text-align: center;">
+            <div class="col-md-3" >
+              <div class="widget">
+                <div class="mini-stats " id="email_stats">
+                  <span class="sky-skin"><a href="/email_leads" style="color:white;"><i class="fa fa-envelope"></i></a></span>
+                  <p style="font-size:18px;"><a href="/email_leads">Total Email</a></p>
+                  <h3 style="text-size:28px; color:white;"><a href="/email_leads" id="email_count" style="text-size:28px; color:white;"><%= EmailLead.count %></a></h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="widget">
+                <div class="mini-stats" id="phone_stats">
+                  <span class="orange-skin"><a href="/phone_leads" style="color:white;"><i class="fa fa-phone"></i></a></span>
+                  <p style="font-size:18px;"><a href="/phone_leads">Total Phone</a></p>
+                  <h3 style="text-size:28px; color:white;"><a href="/phone_leads" id="phone_count" style="text-size:28px; color:white;"><%= PhoneLead.count %></a></h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3" >
+              <div class="widget" >
+                <div class="mini-stats" id="social_stats" >
+                  <span class="purple-skin"><a href="/social_leads" style="color:white;"><i class="fa fa-hashtag"></i></a></span>
+                  <p style="font-size:18px;"><a href="/social_leads">Total Social</a></p>
+                  <h3 style="text-size:28px; color:white;"><a href="/social_leads" id="social_count" style="text-size:28px; color:white;"><%= SocialLead.count %></a></h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3" >
+              <div class="widget" >
+                <div class="mini-stats" id="social_stats" >
+                  <span class="purple-skin"><a href="/social_leads" style="color:white;"><i class="fa fa-hashtag"></i></a></span>
+                  <p style="font-size:18px;"><a href="/users">Global Users</a></p>
+                  <h3 style="text-size:28px; color:white;"><a href="/users" id="social_count" style="text-size:28px; color:white;"><%= User.count %></a></h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="col-md-12 hidden-sm hidden-xs" >
+
+
+        <div class="row" style="">
+          <div class="col-md-12">
+            <%= bar_chart [["Verified", EmailLead.is_valid.count], ["Unverified", (EmailLead.count - EmailLead.is_valid.count)]], :library => {:backgroundColor => "transparent", :legend => {:textStyle => {:color => "white"}}}   %>
+          </div>
+        </div>
+
+        <div class="row" style="">
+          <div class="col-md-6">
+            <%= pie_chart SocialLead.group(:social_network).count,:library => {:backgroundColor => "transparent", :legend => {:textStyle => {:color => "white"}}}   %>
+          </div>
+          <div class="col-md-6">
+            <%= bar_chart [["Email", EmailLead.count], ["Phone", PhoneLead.count], ["Social", SocialLead.count]],
+                          :library => {:backgroundColor => "transparent", :legend => {:textStyle => {:color => "white"}}}   %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <%= geo_chart PhoneLead.group(:state).count, :library => {:backgroundColor => "transparent", region: "US",
+                                                                      resolution: "provinces"}  %>
+          </div>
+          <div class="col-md-6">
+            <%= geo_chart PhoneLead.group(:country).count, :library => {:backgroundColor => "transparent"}  %>
+          </div>
+
+        </div>
+        <div class="row" style="">
+          <div class="col-md-6">
+            <%= pie_chart Opportunity.group(:stage).count,:library =>
+                {:backgroundColor => "transparent", :legend => {:textStyle => {:color => "white"}}}   %>
+          </div>
+          <div class="col-md-6">
+            <%= bar_chart [["New Leads", (EmailLead.count + PhoneLead.count + SocialLead.count)],
+                           ["Saved Leads", Lead.count], ["Prospects", Contact.count], ["Opportunities", Opportunity.count],["Accounts", Account.count]], :library => {:backgroundColor => "transparent", :legend => {:textStyle => {:color => "white"}}}   %>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+ </div>
+  </div>
+
+
+

@@ -1,0 +1,45 @@
+<%= form_for(@image_asset) do |f| %>
+  <% if @image_asset.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@image_asset.errors.count, "error") %> prohibited this image_asset from being saved:</h2>
+
+      <ul>
+      <% @image_asset.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :image_url %><br>
+    <%= f.text_area :image_url %>
+  </div>
+  <div class="field">
+    <%= f.label :source_url %><br>
+    <%= f.text_area :source_url %>
+  </div>
+  <div class="field">
+    <%= f.label :keywords %><br>
+    <%= f.text_area :keywords %>
+  </div>
+  <div class="field">
+    <%= f.label :sentiment %><br>
+    <%= f.text_field :sentiment %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :domain %><br>
+    <%= f.text_field :domain %>
+  </div>
+  <div class="field">
+    <%= f.label :website_id %><br>
+    <%= f.number_field :website_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

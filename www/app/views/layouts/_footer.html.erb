@@ -1,0 +1,17 @@
+<footer class="hidden-sm hidden-xs">
+  <p>© 2017 ContactRocket Inc.</p>
+    <ul>
+      <li><a href="https://blog.your-server.net" title="Blog">Blog</a></li>
+      <li><%= link_to 'Pricing', "https://your-server.net/pricing" %></li>
+      <li><a href="/terms" title="Legal">Terms</a></li>
+      <li><a href="/faq" title="FAQ">FAQ</a></li>
+      <% if user_signed_in? %>
+
+          <li><a href="<%= ENV['PROTOCOL'] %>://<%= ENV['HELPDESK_HOST'] %>/?uid=<%= current_user.uid %>" title="Help">Support</a></li>
+          <li><%= link_to 'My Account', '/users/profile'  %></li>
+    <% else %>
+      <li><%= link_to 'Login', '/login'  %></li>
+      <% end %>
+
+    </ul>
+</footer>

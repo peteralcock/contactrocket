@@ -1,0 +1,17 @@
+<div class="progress ">
+  <i class="fa fa-envelope" style="padding:5px; color:black"></i>
+  <div style="width: <%= ((current_user.email_leads.count.to_f / current_user.max_contacts) * 100).round %>%;" aria-valuemax="<%= current_user.max_contacts %>" aria-valuemin="0" aria-valuenow="<%= current_user.email_leads.count %>" role="progressbar" class="progress-bar orange-skin ">
+  </div>
+</div>
+
+<div class="progress">
+  <i class="fa fa-phone" style="padding:5px; color:black"></i>
+  <div style="width: <%= ((current_user.phone_leads.count.to_f / current_user.max_contacts) * 100).round %>%;" aria-valuemax="<%= current_user.max_contacts %>" aria-valuemin="0" aria-valuenow="<%= current_user.phone_leads.count %>" role="progressbar" class="progress-bar sky-skin ">
+  </div>
+</div>
+
+<div class="progress">
+  <i class="fa fa-hashtag" style="padding:5px; color:black"></i>
+  <div style="width: <%= ((current_user.social_leads.count.to_f / current_user.max_contacts) * 100).round %>%;" aria-valuemax="<%= current_user.max_contacts %>" aria-valuemin="0" aria-valuenow="<%= current_user.social_leads.count %>" role="progressbar" class="progress-bar purple-skin ">
+  </div>
+</div>

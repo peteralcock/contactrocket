@@ -1,0 +1,77 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Prospects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email lead</th>
+      <th>Phone lead</th>
+      <th>Social lead</th>
+      <th>Contact</th>
+      <th>User</th>
+      <th>Email address</th>
+      <th>Phone number</th>
+      <th>Facebook</th>
+      <th>Linkedin</th>
+      <th>Twitter</th>
+      <th>Google plus</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Address</th>
+      <th>Age</th>
+      <th>Dob</th>
+      <th>Industry</th>
+      <th>Domain</th>
+      <th>Company</th>
+      <th>Website</th>
+      <th>Active</th>
+      <th>Valid</th>
+      <th>Person</th>
+      <th>Campaign</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @prospects.each do |prospect| %>
+      <tr>
+        <td><%= prospect.first_name %></td>
+        <td><%= prospect.last_name %></td>
+        <td><%= prospect.email_lead_id %></td>
+        <td><%= prospect.phone_lead_id %></td>
+        <td><%= prospect.social_lead_id %></td>
+        <td><%= prospect.contact_id %></td>
+        <td><%= prospect.user_id %></td>
+        <td><%= prospect.email_address %></td>
+        <td><%= prospect.phone_number %></td>
+        <td><%= prospect.facebook %></td>
+        <td><%= prospect.linkedin %></td>
+        <td><%= prospect.twitter %></td>
+        <td><%= prospect.google_plus %></td>
+        <td><%= prospect.city %></td>
+        <td><%= prospect.state %></td>
+        <td><%= prospect.address %></td>
+        <td><%= prospect.age %></td>
+        <td><%= prospect.dob %></td>
+        <td><%= prospect.industry %></td>
+        <td><%= prospect.domain %></td>
+        <td><%= prospect.company_id %></td>
+        <td><%= prospect.website_id %></td>
+        <td><%= prospect.active %></td>
+        <td><%= prospect.valid %></td>
+        <td><%= prospect.person_id %></td>
+        <td><%= prospect.campaign_id %></td>
+        <td><%= link_to 'Show', prospect %></td>
+        <td><%= link_to 'Edit', edit_prospect_path(prospect) %></td>
+        <td><%= link_to 'Destroy', prospect, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Prospect', new_prospect_path %>

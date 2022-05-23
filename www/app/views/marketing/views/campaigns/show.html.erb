@@ -1,0 +1,13 @@
+<% @page_title = "Campaign Details" %>
+
+<h2>Campaign Options - <%= @campaign.name %></h2>
+
+<div class="campaign settings"> 
+  <%= nested_form_for(@campaign, :html => {:multipart => true}) do |f| %>
+    <%= render partial: "campaigns/options", locals: {f: f} %>
+
+    <%= render partial: "campaigns/buttons", locals: {campaign: @campaign} %>
+  <% end %>
+
+  <%= render partial: 'campaigns/blasts', locals: { campaign: @campaign } %>
+</div>

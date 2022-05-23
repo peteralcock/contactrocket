@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Image Assets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image url</th>
+      <th>Source url</th>
+      <th>Keywords</th>
+      <th>Sentiment</th>
+      <th>Description</th>
+      <th>Domain</th>
+      <th>Website</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @image_assets.each do |image_asset| %>
+      <tr>
+        <td><%= image_asset.image_url %></td>
+        <td><%= image_asset.source_url %></td>
+        <td><%= image_asset.keywords %></td>
+        <td><%= image_asset.sentiment %></td>
+        <td><%= image_asset.description %></td>
+        <td><%= image_asset.domain %></td>
+        <td><%= image_asset.website_id %></td>
+        <td><%= link_to 'Show', image_asset %></td>
+        <td><%= link_to 'Edit', edit_image_asset_path(image_asset) %></td>
+        <td><%= link_to 'Destroy', image_asset, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Image asset', new_image_asset_path %>

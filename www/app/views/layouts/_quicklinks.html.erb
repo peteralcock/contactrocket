@@ -1,0 +1,18 @@
+<li>
+  <a title="" class="red-skin"><i class="fa fa-star"></i></a>
+  <div class="dialouge notification" style="display: none;">
+    <span>You have <%= current_user.email_leads.today.count + current_user.phone_leads.today.count + current_user.social_leads.today.count  %> new matches</span>
+    <% current_user.contacts.last(3).each do |contact| %>
+        <a href="/"> <%= contact.display_name %><p><i class="fa fa-clock-o"></i><%= contact.created_at.to_date %></p></a>
+    <% end %>
+    <a class="view-all" href="https://your-server.net/pricing">ADD TO PROSPECTS</a>
+  </div>
+</li>
+<li><a title="" class="purple-skin"><i class="fa fa-rocket"></i></a>
+  <div class="dialouge notification" style="display: none;">
+    <span><%= current_user.active_engines.value %> active targets</span>
+    <% current_user.websites.last(current_user.max_targets).each do |target| %>
+        <a title="" href="/"><%= target.domain %><p><i class="fa fa-clock-o"></i><%= target.created_at %></p></a>
+    <% end %>
+  </div>
+</li>

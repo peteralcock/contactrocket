@@ -1,0 +1,22 @@
+<% @page_title = "#{@user.name} Login Archive" %>
+<%= link_to("<< Back to Users Menu", list_user_index_path, :class => 'back-link') %>
+<div class="User list">
+  <h2><%=  @user.name %> Logins</h2>
+
+  <div><%= pluralize(@logins.size, 'login') %> logged out of <%= @user.sign_in_count %> logins total </div>
+  <table class="table table-striped" summary="Campaign list">
+    <tr class="header">
+      <th>Date</th>
+      <th>IP</th>
+    </tr>
+
+    <% @logins.each do |login| %>
+
+        <tr>
+          <td><%= login.current_sign_in_at %></td>
+          <td><%= login.current_sign_in_ip %></td>
+        </tr>
+    <% end %>
+  </table>
+
+</div>

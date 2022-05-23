@@ -1,0 +1,57 @@
+<div class="col-md-12">
+  <h1 style="text-align:center;color:black">Simple monthly plans.</h1>
+
+  <h4 style="text-align:center;color:slategrey">
+    No hidden fees. Cancel anytime.
+  </h4>
+  <div class="col-md-4">
+    <div class="widget">
+      <div class="services style2">
+        <span class="red-skin"><i class="fa fa-leaf"></i></span>
+        <h3>
+          <% if params[:plan] and params[:plan] == "1" %>
+              <b style="font-size: 16px;"><%= link_to "Basic", koudoku.new_subscription_path(plan: 1), :id => "basic_btn"  %></b>
+          <% else %>
+              <%= link_to "Basic", koudoku.new_subscription_path(plan: 1), :id => "basic_btn"  %>
+          <% end %>
+
+        </h3>
+        <p style="font-size: 16px;">$20</p>
+      </div><!-- Services -->
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="widget">
+      <div class="services style2">
+        <span class="sky-skin"><i class="fa fa-star"></i></span>
+        <h3>
+          <% if params[:plan] and params[:plan] == "2" %>
+              <b style="font-size: 16px;">
+                <%= link_to "Advantage", koudoku.new_subscription_path(plan: 2) , :id => "advantage_btn"  %>
+              </b>
+          <% else %>
+              <%= link_to "Advantage", koudoku.new_subscription_path(plan: 2) , :id => "advantage_btn"  %>
+          <% end %>
+        </h3>
+        <p style="font-size: 18px;">$50</p>
+      </div><!-- Services -->
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="widget">
+      <div class="services style2">
+        <span class="purple-skin"><i class="fa fa-space-shuttle"></i></span>
+        <h3>
+          <% if params[:plan] and params[:plan] == "3" %>
+              <b style="font-size: 16px;"><%= link_to "Enterprise", koudoku.new_subscription_path(plan: 3) , :id => "enterprise_btn"  %></b>
+          <% else %>
+              <%= link_to "Enterprise", koudoku.new_subscription_path(plan: 3) , :id => "enterprise_btn"  %>
+          <% end %>
+        </h3>
+        <p style="font-size: 18px;">$200</p>
+      </div><!-- Services -->
+    </div>
+  </div>
+
+
+</div>

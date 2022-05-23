@@ -1,0 +1,81 @@
+<div class="panel panel-default">
+  <div class="panel-heading" data-toggle="collapse" data-target="#collapseOne">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+        Campaign Settings
+      </a>
+    </h4>
+  </div>
+  <div id="collapseOne" class="panel-collapse collapse">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-3">
+          <p>Name</p>
+        </div>
+        <div class="col-xs-1">
+          <span class="glyphicon glyphicon-question-sign" title="Enter campaign name"></span>
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_field(:name, 
+                  placeholder: 'Mail Campaign', 
+                  class: 'form-control') %>
+        </div>
+      </div>
+
+      <div class="row top-buffer">
+        <div class="col-xs-3">
+          <p>Description</p>
+        </div>
+        <div class="col-xs-1">
+            <span class="glyphicon glyphicon-question-sign" title="Enter campaign details with description"></span>
+        </div>
+        <div class="col-xs-8">
+            <%= f.text_field(:description, placeholder: 'Description Info', class: 'form-control') %>
+        </div>
+      </div>
+
+      <div class="row top-buffer">
+        <div class="col-xs-3">
+          <p>Active</p>
+        </div>
+        <div class="col-xs-1">
+          <span class="glyphicon glyphicon-question-sign" title="Making campaign active will enable the target website using Apache's virtual host. Ensure a Fully Qualified Domain Name is populated below before going active."></span>
+        </div>
+        <div class="col-xs-8">
+          <p><%= f.check_box(:active) %></p>
+        </div>
+      </div>
+
+      <div class="row top-buffer">
+        <div class="col-xs-3">
+          <p>Test Target</p>
+        </div>
+        <div class="col-xs-1">
+           <span class="glyphicon glyphicon-question-sign" title="This is the only email that will be used when you click 'Test Email'."></span>
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_field(:test_email, 
+                  placeholder: 'email@your-server.net',
+                  class: 'form-control') %>
+        </div>
+      </div>
+
+      <div class="row top-buffer">
+        <div class="col-xs-3">
+          <p>Targets ( <%= link_to(@campaign.victims.size,
+                  victims_campaigns_path(id: @campaign)) %> )</p>
+        </div>
+        <div class="col-xs-1">
+          <span class="ui-icon ui-icon-help" title="Insert email addresses in a list or csv form"></span>
+          <span class="glyphicon glyphicon-question-sign" title="Insert email addresses in a list or csv form"></span>
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_area(:emails, :size => "31x2",
+                  placeholder: 'firstname, lastname, email@your-server.net',
+                  value: '',
+                  class: 'form-control') %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

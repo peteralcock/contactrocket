@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Meta-Information -->
+    <title>ContactRocket | Next generation lead generation</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+
+    <%= csrf_meta_tags %>
+    <%= yield :koudoku %>
+
+  </head>
+
+  <body style="background:#FFFFFF">
+  <div style="width: 100%; opacity: 0;" id="progressBar">
+    <div class="loader"></div>
+  </div>
+    <main role="main">
+       <%= yield %>
+    </main>
+
+  </body>
+
+</html>
+<script src="/js/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/sweetalert.css">
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-81000478-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<%  if current_user and current_user.created_at >= 15.seconds.ago   %>
+    <script>
+      // Instance the tour
+      var tour = new Tour({
+        backdrop: true,
+        backdropContainer: 'body',
+        backdropPadding: false,
+        smartPlacement: false,
+        keyboard: true,
+        smartPlacement: false,
+        next: 0,
+        prev: 0,
+        animation: true,
+        container: "html",
+        backdrop: true,
+        orphan: false,
+        steps: [
+          {
+            orphan: true,
+            title: "Getting Started",
+            placement: "top",
+            content: "Welcome! Let's take a look around..."
+
+          },
+
+          {
+            element: "#targeting_box",
+            title: "Targeting Websites",
+            placement: "top",
+            content: "Scan a website to download contacts"
+          },
+
+          {
+            element: "#email_stats",
+            title: "Email Matches",
+            placement: "right",
+            content: "Validated email addresses"
+          },
+
+          {
+            element: "#phone_stats",
+            title: "Phone Matches",
+            placement: "bottom",
+            content: "Domestic phone numbers"
+          },
+
+          {
+            element: "#social_stats",
+            title: "Social Media",
+            placement: "left",
+            content: "Related online profiles"
+          }
+
+
+
+        ]});
+
+      // Initialize the tour
+      // tour.init();
+
+      // Start the tour
+     //  tour.start(true);
+    </script>
+<% end %>

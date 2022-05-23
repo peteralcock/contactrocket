@@ -1,0 +1,115 @@
+
+
+<div class="admin-details" style="padding-top: 40px; ">
+  <img src="/images/logo.png" width="150px">
+</div>
+
+<div class="menu-scroll">
+
+  <div style="text-align: center;position: relative; overflow: hidden; width: auto; height: 400px;" class="slimScrollDiv">
+    <div style="overflow: hidden; width: auto; height: 400px;" class="side-menus">
+      <nav>
+        <ul>
+
+          <li class="menu-item-has-children">
+            <a href="" title=""><i class="fa fa-dashboard"></i> <span> DASHBOARD <b><% current_user.total_contacts %></b></span></a>
+            <ul style="display: none;">
+              <li class="menu-item">
+                <a href="/dashboard" title=""><i class="fa fa-rocket"  style="font-size: 14px;"></i> <span style="padding-left:2px;"> MISSION CONTROL </span></a>
+              </li>
+              <hr>
+              <li class="menu-item">
+                <a href="/phone_leads" title=""><i class="fa fa-phone"  style="font-size: 14px;"></i> <span style="padding-left:2px;"> PHONE NUMBERS </span></a>
+              </li>
+
+              <li class="menu-item">
+                <a href="/email_leads" title=""><i class="fa fa-envelope"  style="font-size: 14px;"></i> <span style="padding-left:2px;"> EMAIL ADDRESSES </span></a>
+              </li>
+
+              <li class="menu-item">
+                <a href="/social_leads" title=""><i class="fa fa-hashtag"  style="font-size: 14px;"></i> <span style="padding-left:2px;"> ONLINE PROFILES </span></a>
+              </li>
+
+
+            </ul>
+          </li>
+
+          <li class="menu-item-has-children">
+            <a href="" title=""><i class="fa fa-cloud"></i> <span> CLOUD CRM <b><% current_user.total_contacts %></b></span></a>
+            <ul style="display: none;">
+
+              <li class="menu-item">
+                <a href="/crm/leads" title=""><i class="fa fa-user-plus"  style="font-size: 14px;"></i>
+                  <span style="padding-left:2px;"> NEW LEADS </span></a>
+              </li>
+
+              <li class="menu-item">
+                <a href="/crm/opportunities" title=""><i class="fa fa-usd"  style="font-size: 14px;"></i>
+                  <span style="padding-left:2px;"> PROSPECTS </span></a>
+              </li>
+
+              <li class="menu-item">
+                <a href="/crm/contacts" title=""><i class="fa fa-group"  style="font-size: 14px;"></i>
+                  <span style="padding-left:2px;"> CONTACTS </span></a>
+              </li>
+
+              <li class="menu-item">
+                <a href="/crm/accounts" title=""><i class="fa fa-trophy"  style="font-size: 14px;"></i>
+                  <span style="padding-left:2px;"> ACCOUNTS </span></a>
+              </li>
+
+              <li class="menu-item">
+                <a href="/crm/tasks" title=""><i class="fa fa-tasks"  style="font-size: 14px;"></i>
+                  <span style="padding-left:2px;"> MY TASKS </span></a>
+              </li>
+            </ul>
+          </li>
+
+
+          <li class="menu-item-has-children">
+            <a href="" title=""><i class="fa fa-send"></i> <span> MARKETING </span></a>
+            <ul style="display: none;">
+              <li class="menu-item">
+                <a href="/crm/campaigns" title=""><i class="fa fa-bullhorn"  style="font-size: 14px;"></i> <span style="padding-left:2px;"> CAMPAIGNS </span></a>
+              </li>
+
+              <li class="menu-item">
+                <a href="/marketing/campaigns" title=""><i class="fa fa-send"  style="font-size: 14px;"></i> <span style="padding-left:2px;"> NEWSLETTERS </span></a>
+              </li>
+
+              <li class="menu-item">
+                <a href="/marketing/templates" title=""><i class="fa fa-file-text-o"  style="font-size: 14px;"></i> <span style="padding-left:2px;"> TEMPLATES </span></a>
+              </li>
+
+              <li class="menu-item">
+                <a href="/marketing/reports" title=""><i class="fa fa-bar-chart-o"  style="font-size: 14px;"></i> <span style="padding-left:2px;"> ANALYTICS </span></a>
+              </li>
+
+            </ul>
+          </li>
+
+          <li class="menu-item">
+            <a href="/crm/profile" title=""><i class="fa fa-user"  style="font-size: 14px;"></i>
+              <span style="padding-left:2px;"> MY PROFILE </span></a>
+          </li>
+
+          <li class="menu-item">
+            <a href="/pricing" title=""><i class="fa fa-star"  style="font-size: 14px;"></i>
+              <span style="padding-left:2px;"> UPGRADE </span></a>
+          </li>
+
+          <li class="menu-item">
+            <a href="<%= ENV['PROTOCOL'] %>://<%= ENV['CRM_HOST'] %>/logout" title=""><i class="fa fa-sign-out"  style="font-size: 14px;"></i>
+              <span style="padding-left:2px;"> LOGOUT </span></a>
+          </li>
+        </ul>
+
+
+      </nav>
+
+    </div>
+
+
+  </div>
+</div><!-- Menu Scroll -->
+

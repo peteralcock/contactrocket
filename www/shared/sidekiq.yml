@@ -1,0 +1,24 @@
+:concurrency: 5
+:timeout: 10
+
+development:
+  :concurrency: 5
+  :queues:
+    - crawler
+    - default
+    - searchkick
+    - validation
+test:
+  :concurrency: 5
+  :queues:
+    - [crawler,4]
+    - [default,2]
+    - searchkick
+    - validation
+
+production:
+  :concurrency: 5
+  :queues:
+    - [crawler,4]
+    - default
+    - validation

@@ -1,0 +1,132 @@
+
+<style>
+  h3 {
+    color:white;
+  }
+
+  label {
+    color:black;
+  }
+  input {
+    color:black;
+  }
+  body {
+    color:black;
+  }
+
+</style>
+
+<div class="main-content">
+
+<div class="account-user-sec">
+    <div class="account-sec">
+        <div class="account-top-bar">
+            <div class="container">
+              <div class="logo">
+                <a href="/" title="" style="font-family: orbitron-light; color:white">
+                  <i class="fa fa-rocket"></i> ContactRocket<b style="font-size: 8px;">™</b> </a>
+              </div>
+                <ul class="account-header-link">
+                    <li><a title="" href="/users/sign_up">Register</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="acount-sec">
+
+
+          <div class="container">
+
+              <div class="row">
+                    <div class="col-md-4">
+                      <div class="account-detail">
+                        <h2 style="color:white;">Autopilot for your CRM</h2>
+                        <hr>
+
+                        <ul>
+                          <li>
+                            <h3><i class="fa  fa-rocket"></i>Web Prospector</h3>
+                            <p style="color:white">Download contact info from any URL</p>
+                          </li>
+                          <li>
+                            <h3><i class="fa fa-check"></i>Email Validator</h3>
+                            <p style="color:white">Keep yourself safe from blacklists</p>
+                          </li>
+                          <li>
+                            <h3><i class="fa fa-bar-chart"></i>Lead Analytics</h3>
+                            <p style="color:white">Uncover your top target audiences</p>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="contact-sec">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="widget-title authform">
+                                        <h2>Welcome back!</h2>
+                                        <span>Create a free account if you're new here.</span>
+                                    </div><!-- Widget title -->
+                                    <div class="account-form">
+                                      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f| %>
+                                          <%= devise_error_messages! %>
+
+                                          <div class="row">
+                                            <div class="feild col-md-12">
+                                              <%= f.label :email %>
+                                              <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+                                            </div>
+                                            <div class="feild col-md-12">
+                                              <%= f.label :password %>
+                                              <%= f.password_field :password, class: 'form-control' %>
+                                              <%- if devise_mapping.recoverable? %>
+                                                  <br>
+                                                  <%= link_to "Forgot your password?", "/user/password/new", class: 'right' %>
+                                              <% end -%>
+                                            </div>
+                                            <div class="feild col-md-12">
+                                              <%= f.submit 'Sign in', :class => 'button right' %>
+                                              <% if devise_mapping.rememberable? -%>
+                                                  <div class="checkbox" style="width:150px">
+                                                    <label>
+                                                      <%= f.check_box :remember_me %> Remember me
+                                                    </label>
+                                                  </div>
+                                              <% end -%>
+                                            </div>
+                                          </div>
+                                      <% end %>
+
+
+
+
+
+
+                                    </div>
+                                    <div class="more-option">
+                                        <span>OR</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="creat-an-account">
+                                        <span>Don't have an account?</span>
+                                      <%- if devise_mapping.registerable? %>
+                                          <%= link_to 'Create Account', new_registration_path(resource_name)  %>
+                                    <% end -%>
+
+
+                                    </div><!-- Create an account -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- Account Sec -->
+  <%= render :partial => "layouts/footer" %>
+
+</div>
+
+</div><!-- Main Content -->
+

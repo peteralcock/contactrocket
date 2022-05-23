@@ -1,0 +1,59 @@
+ <style>
+   .btn {
+     color:black;
+   }
+     .price-table {
+       -webkit-box-shadow: 0px 0px 76px -1px rgba(0,0,0,0.75);
+       -moz-box-shadow: 0px 0px 76px -1px rgba(0,0,0,0.75);
+       box-shadow: 0px 0px 76px -1px rgba(0,0,0,0.75);
+
+     }
+ </style>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<!-- jQuery is used only for this example; it isn't required to use Stripe -->
+
+<div style="text-align: center; background:transparent;">
+  <div class="price-sec">
+    <div class="row">
+    <ul class="thumbnails koudoku-pricing-table" style="list-style: none; ">
+  <% @plans.each do |plan| %>
+      <div class="col-md-4">
+        <ul class="price-table <%= 'plan-primary' if plan.highlight? %>">
+          <li class="price-title"><%= plan.name %></li>
+          <li class="price-rate"><h3><span>$</span><%= plan.price.round %><i> /month</i></h3></li>
+          <li class="price-description"><%= plan.description.html_safe %></li>
+          <% plan.features.to_s.split("\n\n").each do |feature| %>
+            <li class="price-features"><%= feature %></li>
+          <% end %>
+
+          <li class="price-signup">
+            <% if @subscription.nil? %>
+                <%= link_to Koudoku.free_trial? ? t('koudoku.plan_difference.start_trial') : t('koudoku.subscriptions.sign_up'), koudoku.new_subscription_path(plan: plan.id), class: "btn btn-success btn-large" %>
+            <% elsif @subscription.persisted? %>
+                <% if @subscription.plan == plan %>
+                    <%= form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f| %>
+                        <%= f.submit t('koudoku.plan_difference.selected'), class: "btn btn-large", disabled: 'disabled', id: "upgrade_btn_#{plan.id}" %>
+                    <% end %>
+                <% else %>
+                    <%= form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f| %>
+                        <%= f.hidden_field :plan_id, value: plan.id %>
+                        <%= f.hidden_field :owner_id, value: @owner.id %>
+                        <%= f.submit @subscription.describe_difference(plan), class: "btn btn-success btn-large btn-payment", id: "upgrade_btn_#{plan.id}"  %>
+                    <% end %>
+                <% end %>
+            <% else %>
+                <%= link_to Koudoku.free_trial? ? t('koudoku.plan_difference.start_trial') : t('koudoku.plan_difference.upgrade'), new_owner_subscription_path(@owner, plan: plan.id), class: "btn btn-success btn-large" %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+  <% end %>
+
+</ul>
+    </div>
+  </div>
+</div>
+

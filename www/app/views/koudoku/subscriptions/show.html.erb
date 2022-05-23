@@ -1,0 +1,53 @@
+<style>
+  td {
+    color:white;
+  }
+  tr {
+    color:white;
+  }
+  thead {
+    color:white;
+  }
+
+  a {
+    color:white;
+  }
+
+  .main-content {
+    background: url(/images/thumbsup.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 920px;
+  }
+
+
+</style>
+<%= render 'layouts/topbar' %>
+<header class="side-header light-skin">
+  <%= render 'layouts/navigation' %>
+</header>
+<div class="main-content" >
+
+
+  <div style="text-align: center; padding-top:100px;" >
+    <% if @subscription.plan.present? %>
+        <h1 style="color: white; text-shadow: 6px 6px 0px rgba(0,0,0,0.2);">You have upgraded successfully!</h1>
+
+        <%= link_to t('koudoku.subscriptions.choose_other_plan'), edit_owner_subscription_path(@owner, @subscription), class: 'btn' %>
+    <% else %>
+        <%= link_to t('koudoku.subscriptions.choose_plan'), edit_owner_subscription_path(@owner, @subscription), class: 'btn' %>
+    <% end %>
+
+    <% link_to t('koudoku.payment.update_payment_information'), edit_owner_subscription_path(@owner, @subscription, update: 'card'), class: 'btn' %>
+  </div>
+
+</div>
+<%= render :partial => "layouts/footer" %>
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<!-- jQuery is used only for this example; it isn't required to use Stripe -->

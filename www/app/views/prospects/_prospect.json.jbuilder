@@ -1,0 +1,2 @@
+json.extract! prospect, :id, :first_name, :last_name, :email_lead_id, :phone_lead_id, :social_lead_id, :contact_id, :user_id, :email_address, :phone_number, :facebook, :linkedin, :twitter, :google_plus, :city, :state, :address, :age, :dob, :industry, :domain, :company_id, :website_id, :active, :valid, :person_id, :campaign_id, :created_at, :updated_at
+json.url prospect_url(prospect, format: :json)

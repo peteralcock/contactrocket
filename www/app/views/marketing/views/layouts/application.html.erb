@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!DOCTYPE HTML>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ContactRocket | Marketing</title>
+  <%= csrf_meta_tags %>
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
+  <![endif]-->
+
+  <%= stylesheet_link_tag "application", controller_name %>
+  <%= javascript_include_tag "application", controller_name %>
+
+</head>
+<body>
+
+  <!-- main content -->
+  <div id="content" class="col-xs-12 col-sm-12">
+    <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+    <% end %>
+
+    <%= yield %>
+  </div>
+  <!-- end content -->
+
+  <!-- footer -->
+  <div id="footer" class="navbar-fixed-bottom">
+    <div class="container">
+      <p class="text-muted">&copy; www.your-server.net</p>
+    </div>
+  </div>
+  <!-- end footer -->
+
+</body>
+</html>

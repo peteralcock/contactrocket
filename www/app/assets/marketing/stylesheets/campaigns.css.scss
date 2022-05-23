@@ -1,0 +1,26 @@
+// Place all the styles related to the campaigns controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#dashboard-campaign:hover > div {
+  background-color: #F5F5F5;
+}
+
+#campaign-buttons .btn {
+  margin-bottom: 1em;
+}
+
+#show-campaign-buttons .btn {
+  margin-top: 1.5em;
+}
+
+#dashboard-campaign > div > div > h3 {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.top-buffer { margin-top:5px; }
+
+#accordion div.panel-heading {
+  cursor: pointer;
+}
