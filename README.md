@@ -2,7 +2,7 @@
 ![ContactRocket](/logo.png?raw=true "ContactRocket")
 
 
-This is a project I started several years ago and ultimately failed to launch a SaaS product (marketing is expensive). It has sat uncelebrated on my external hard-drive "mountain" for years, and figured I may as well just give it away and sacrifice my monetization pipedream to make an open-source contribution as an expression of my gratitude for Ruby on Rails, Sidekiq (
+This is a project I started several years ago and ultimately failed to launch a SaaS product (marketing is expensive). It has sat uncelebrated on my external hard-drive "mountain" for years, and figured I may as well just give it away and sacrifice my monetization pipedream to make an open-source contribution as an expression of my gratitude for Ruby on Rails, Sidekiq/
 <a href="https://www.mikeperham.com/">Mike Perham</a>, GitHub, and Amazon Web Services. Thanks to these aformentioned corporate and human entities, my life-long love for software has been all the more enjoyable. Gladiators, I salute you.
 ## Getting Started
 This whole thing is containerized into a few core services: CRM, Dashboard, and the Engine. If you know Docker and Rails and AWS, you should be fine. If you don't, watch this cute explainer video I made instead... [![Watch the video](/logo.jpg?raw=true )](https://www.youtube.com/watch?v=cXQpZ4bjAEc)
@@ -13,7 +13,7 @@ I set this up to easily be deployed on Elastic Beanstalk and created a series of
 
 ## Web Dashboard / Front-End
 
-I created the dashboard using websockets and AJAX to deliver live visual indicators of your crawlers progress because it's much more exciting to watch than having to refresh the page everytime a user wants to "check their score". A thousand man hours went into this simple improvement to the UX/UI, so be grateful.
+I created the dashboard using websockets and AJAX to deliver live visual indicators of your crawlers progress because it's much more exciting to watch than having to refresh the page everytime a user wants to "check their score".
 
 ![Screenshot](/screenshot.jpg?raw=true "Dashboard")
 
