@@ -1,9 +1,9 @@
 
-![ContactRocket](/logo.png?raw=true "ContactRocket")
-[![INTRO VIDEO](https://img.youtube.com/vi/cXQpZ4bjAEc/0.jpg)](https://www.youtube.com/watch?v=cXQpZ4bjAEc)
+[![CONTACTROCKET](https://img.youtube.com/vi/cXQpZ4bjAEc/0.jpg)](https://www.youtube.com/watch?v=cXQpZ4bjAEc)
 
-![]([contactrocket.mp4](https://github.com/peteralcock/contactrocket/raw/main/contactrocket.mp4))
-
+<video width="320" height="240" controls>
+  <source src="contactrocket.mp4" type="video/mp4">
+</video>
 =
 ## Getting Started
 This whole thing is containerized into a few core services: CRM, Dashboard, and the Engine. If you know Docker and Rails and AWS, you should be fine. If you don't, watch this cute explainer video I made instead... [![Watch the video](/logo.jpg?raw=true )](https://www.youtube.com/watch?v=cXQpZ4bjAEc)
