@@ -1,5 +1,7 @@
 
 ![ContactRocket](/logo.png?raw=true "ContactRocket")
+[![INTRO VIDEO](https://img.youtube.com/vi/cXQpZ4bjAEc/0.jpg)](https://www.youtube.com/watch?v=cXQpZ4bjAEc)
+
 ![]([contactrocket.mp4](https://github.com/peteralcock/contactrocket/raw/main/contactrocket.mp4))
 
 =
