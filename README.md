@@ -5,8 +5,8 @@
 # Getting Started
 This whole thing is containerized into a few core services: CRM, Dashboard, and the Engine.
 
-## Deployment
-PostgreSQL stores the records created from crawls, Redis is used in combination with a bloom filter and hiredis client (for performance) to keep track of all the pending crawl jobs and to track previously crawled URLs. ElasticSearch is used to make all of the returned results searchable, with each added record being asynchroniously indexed by the background workers to prevent bottlenecks. You will wanna tune the Redis configuration to use the LRU cache policy (least recently used) for when it needs to choose was to abandon. Using LRU will result in punting problematic URLs first when memory starts to bloat on the EC2 instance.
+## Deploymentu
+PostgreSQL stores the records created from crawls, Redis is used in combination with a bloom filter and hiredis client (for performance) to keep track of all the pending crawl jobs and to track previously crawled URLs. ElasticSearch is used to make all of the returned results searchable, with each added record being asynchroniously indexed by the background workers to prevent bottlenecks. You will wanna tune the Redis configuration to use the LRU cache policy (least recently used) for when it needs to choose what links to ultimately abandon after multiple retries. Using LRU will result in punting problematic URLs first when memory starts to bloat on the EC2 instance.
 
 ## Dashboard
 
